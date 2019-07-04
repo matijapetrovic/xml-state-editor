@@ -1,0 +1,29 @@
+TODO
+-------
+
+I - Dijagrami
+--------------
+1. Izmeniti zahteve
+	a. Izbaciti nebitne
+	b. Dodati opis za bitne
+2. Izmeniti use-case
+	a. Pre condition/Post condition/ Ono trece
+3. Izmeniti klas
+	a. One akcije
+	b. Jovica da se javi
+4. Ostavicemo state
+5. Activity i Sequence
+	a. Pitati nekog kako su oni
+	b. Uraditi
+
+II - Kod
+---------------
+1. Model - Dzoni
+	a. Izgenerisati i doraditi 
+2. Vieweri - Matija
+3. Parsiranje XML-a - Kabi/Vuki
+4. Ostatak svega - Jovica i utrcava Dzoni
+	a. Akcije
+	b. Kontroleri
+
+
