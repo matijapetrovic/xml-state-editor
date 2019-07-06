@@ -1,5 +1,7 @@
 #include "Document.h"
 
+using namespace std;
+
 Document::Document(string name) :
 	name(name)
 {}
@@ -20,27 +22,27 @@ void Document::addAction(Action a)
 {
 	actions.push_back(a);
 }
-void Document::setTransitions(Transitions& tran)
+void Document::setTransitions(list<Transition> &tran)
 {
 	transitions = tran;
 }
-void Document::setFields(Fields& fil) 
+void Document::setFields(list<Field>& fil)
 {
 	fields = fil;
 }
-void Document::setActions(Actions& ac)
+void Document::setActions(list<Action>& ac)
 {
 	actions = ac;
 }
-Actions& Document::getActions()
+list<Action>& Document::getActions()
 {
 	return actions;
 }
-Transitions& Document::getTransitions()
+list<Transition>& Document::getTransitions()
 {
 	return transitions;
 }
-Fields& Document::getFields()
+list<Field>& Document::getFields()
 {
 	return fields;
 }

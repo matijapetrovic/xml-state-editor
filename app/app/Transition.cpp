@@ -1,5 +1,7 @@
 #include "Transition.h"
 
+using namespace std;
+
 Transition::Transition(int _entity_id, string _lifecycle_name, EntityName _en_name)
 {
 	entity_id = _entity_id;
@@ -7,7 +9,7 @@ Transition::Transition(int _entity_id, string _lifecycle_name, EntityName _en_na
 	entity_name = _en_name;
 }
 
-Transition::Transition(int _entity_id, string _lifecycle_name, EntityName _en_name,State on_succ, State on_f) :
+Transition::Transition(int _entity_id, string _lifecycle_name, EntityName _en_name,State* on_succ, State* on_f) :
 	entity_id(_entity_id),
 	lifecycle_name(_lifecycle_name),
 	entity_name(_en_name),
@@ -38,19 +40,19 @@ void Transition::setEntityName(EntityName entity)
 {
 	entity_name = entity;
 }
-void Transition::setOnSucceed(State onsucceed)
+void Transition::setOnSucceed(State* onsucceed)
 {
 	on_succeed = onsucceed;
 }
-void Transition::setOnFail(State onfail)
+void Transition::setOnFail(State* onfail)
 {
 	on_fail = onfail;
 }
-State Transition::getOnFail()
+State* Transition::getOnFail()
 {
 	return on_fail;
 }
-State Transition::getOnSucceed()
+State* Transition::getOnSucceed()
 {
 	return on_succeed;
 }

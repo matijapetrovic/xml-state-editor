@@ -1,7 +1,7 @@
-#pragma once
+#ifndef _APP_H_
+#define _APP_H_
 
 #include <QtWidgets/QMainWindow>
-#include "ui_App.h"
 
 class App : public QMainWindow
 {
@@ -11,5 +11,6 @@ public:
 	App(QWidget *parent = Q_NULLPTR);
 
 private:
-	Ui::AppClass ui;
 };
+
+#endif _APP_H_

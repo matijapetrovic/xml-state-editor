@@ -1,7 +1,6 @@
-#pragma once
-#include <iostream>
 
-using namespace std;
+#ifndef _ACTION_H_
+#define _ACTION_H_
 
 class Action {
 public:
@@ -9,3 +8,5 @@ public:
 	//ovde valjda idu nekakve funckije
 	
 };
+
+#endif // _ACTION_H_

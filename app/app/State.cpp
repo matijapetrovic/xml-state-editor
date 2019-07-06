@@ -1,5 +1,6 @@
 #include "State.h"
 
+using namespace std;
 
 State::State(int _entity_id, string _display_name, Document* _document) :
 	entity_id(_entity_id),
@@ -11,23 +12,23 @@ void State::setStateSemantic(list<StateSemantic>& ss)
 {
 	state_semantic = ss;
 }
-void State::setActions(Actions& act)
+void State::setActions(list<Action>& act)
 {
 	actions = act;
 }
-void State::setTransitions(Transitions& tr)
+void State::setTransitions(list<Transition>& tr)
 {
 	transitions = tr;
 }
-void State::setMandatory(Fields& mandatory)
+void State::setMandatory(list<Field>& mandatory)
 {
 	mandatory_fields = mandatory;
 }
-void State::setHide(Fields& hide)
+void State::setHide(list<Field>& hide)
 {
 	hide_fields = hide;
 }
-void State::setDeny(Fields& deny)
+void State::setDeny(list<Field>& deny)
 {
 	deny_modyfing_filds = deny;
 }
