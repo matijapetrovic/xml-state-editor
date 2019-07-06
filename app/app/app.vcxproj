@@ -125,6 +125,13 @@
   <ItemGroup>
     <QtRcc Include="App.qrc" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="Document.h" />
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Transition.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
