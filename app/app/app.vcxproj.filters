@@ -28,34 +28,47 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\model">
+      <UniqueIdentifier>{abef931d-bc6a-4019-a088-f9ca14fadcc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view">
+      <UniqueIdentifier>{97639e2b-e034-40a2-94b2-8fb101703498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controller">
+      <UniqueIdentifier>{27812d64-ebf8-40e4-81d1-b40436c47db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{89eb2733-12c7-4e12-a27c-a70bec3d8159}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view">
+      <UniqueIdentifier>{0a40e419-abb8-4f0e-ab7d-edae500ccd4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller">
+      <UniqueIdentifier>{61fea4ae-8055-46d7-bf5f-227f54014315}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Action.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="Document.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Document.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="Transition.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\model</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="App.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="App.qrc">
@@ -64,19 +77,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Document.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="Field.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
+    <ClInclude Include="Document.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="App.h">
+      <Filter>Header Files\model</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>
