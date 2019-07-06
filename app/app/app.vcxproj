@@ -113,8 +113,13 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Document.cpp" />
+    <ClCompile Include="Field.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="App.h" />
@@ -124,6 +129,14 @@
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="App.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="Document.h" />
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="IR.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
