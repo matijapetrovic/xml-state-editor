@@ -1,5 +1,4 @@
-#ifndef _APP_H_
-#define _APP_H_
+#pragma once
 
 #include <QtWidgets/QMainWindow>
 
@@ -12,5 +11,3 @@ public:
 
 private:
 };
-
-#endif _APP_H_
