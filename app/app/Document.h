@@ -30,6 +30,7 @@ public:
 	
 	std::list<Action>& get_actions();
 	std::list<Transition>& get_transitions();
+	std::list<State*>& get_states();
 	std::list<Field>& get_fields();
 	std::string get_name() { return name; };
 	State* get_state() { return state; };
@@ -39,6 +40,7 @@ private:
 	
 	State* state;
 	
+	std::list<State*> states;
 	std::list<Transition> transitions;
 	std::list<Field> fields;
 	std::list<Action> actions;

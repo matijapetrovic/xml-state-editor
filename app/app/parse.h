@@ -13,6 +13,21 @@ public:
 
 class Parser {
 
+private:
+	/*
+		Set all states with appropriate transition
+	*/
+	void fill_states();
+	
+	/*
+		Set all transitions with appropriate states
+	*/
+	void fill_transitions();
+
+	/*
+		Calls fill_states and fill_transitions
+	*/
+	void connect();
 
 public:
 	Document document;
@@ -21,7 +36,9 @@ public:
 	bool valid_file(string filename);
 	void readTransitions(string filename);
 	void readStates(string filename);
-	void connect();
+	void read_and_connect(string filename);
+	
+
 
 
 };

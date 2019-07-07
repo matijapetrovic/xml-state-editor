@@ -24,6 +24,9 @@ public:
 	EntityName get_entity_name();
 	State* get_on_fail();
 	State* get_on_succeed();
+	int get_on_succeed_num();
+	int get_on_failed_num();
+
 
 	// Setters
 	void set_entity_id(int id);
@@ -31,6 +34,8 @@ public:
 	void set_entity_name(EntityName entity);
 	void set_on_succeed(State* succeed);
 	void set_on_fail(State* fail);
+	void set_on_succeed_num(int num);
+	void set_on_failed_num(int num);
 
 private:
 	int entity_id;
@@ -39,6 +44,9 @@ private:
 
 	State* on_succeed;
 	State* on_fail;
+
+	int on_succeed_num;
+	int on_failed_num;
 };
 
 #endif // _TRANSITION_H_
