@@ -1,7 +1,6 @@
 #ifndef _TRANSITION_H_
 #define _TRANSITION_H_
 
-#include <string>
 #include "enum.h"
 #include "Document.h"
 #include "State.h"
@@ -9,8 +8,6 @@
 // Forward declarations
 class State;
 class Document;
-
-
 
 class Transition {
 public:
