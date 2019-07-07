@@ -4,6 +4,7 @@ FileDialog::FileDialog() :
 	QDialog(),
 	opened_document(nullptr)
 {
+	setWindowTitle("XML State Machine");
 	init_geometry();
 	init_layout();
 }

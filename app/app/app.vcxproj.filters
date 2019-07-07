@@ -108,6 +108,9 @@
     <ClCompile Include="DocumentView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="MainView.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="App.qrc">
@@ -144,6 +147,9 @@
     </ClInclude>
     <ClInclude Include="enum.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MainView.h">
+      <Filter>Header Files\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 #include <QTextStream>
 #include "parse.h"
 #include "App.h"
+#include "MainView.h"
 
 #include <fstream>
 #include <iostream>
@@ -12,9 +13,9 @@ int main(int argc, char *argv[])
 {
 	
 	App a(argc, argv);
-	a.show_document_dialog();
-	Parser p;
-	p.readTransitions("Lifecycle.xml");
+
+	MainView main_view;
+	main_view.show();
 
 	return a.exec();
 }
