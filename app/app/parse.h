@@ -1,6 +1,8 @@
 #pragma once
 #include "tinystr.h"
 #include "tinyxml.h"
+#include <string>
+#include "Document.h"
 
 using namespace std;
 
@@ -11,9 +13,15 @@ public:
 
 class Parser {
 
-public:
 
+public:
+	Document document;
+
+	int strToInt(const char*);
 	bool valid_file(string filename);
-	void read(string filename);
+	void readTransitions(string filename);
+	void readStates(string filename);
+	void connect();
+
 
 };

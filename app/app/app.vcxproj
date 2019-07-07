@@ -115,9 +115,14 @@
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="C:\Users\nikol\Desktop\tinystr.cpp" />
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxml.cpp" />
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlerror.cpp" />
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlparser.cpp" />
     <ClCompile Include="Document.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="parse.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
@@ -131,7 +136,10 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="Document.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="parse.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="tinyxml.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

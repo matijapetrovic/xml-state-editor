@@ -46,6 +46,12 @@
     <Filter Include="Source Files\controller">
       <UniqueIdentifier>{61fea4ae-8055-46d7-bf5f-227f54014315}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\parser">
+      <UniqueIdentifier>{f3614192-ae7a-49d2-b191-15dfe4e36caa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parser">
+      <UniqueIdentifier>{027b3db6-ab93-4a6d-a7ad-d2788d3f77b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +75,21 @@
     <ClCompile Include="Transition.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlerror.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinystr.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxml.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlparser.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="parse.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="App.qrc">
@@ -90,6 +111,15 @@
     </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="parse.h">
+      <Filter>Header Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>Header Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Header Files\parser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

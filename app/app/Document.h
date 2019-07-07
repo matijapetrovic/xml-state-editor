@@ -38,7 +38,7 @@ private:
 	std::string name;
 	
 	State* state;
-		
+	
 	std::list<Transition> transitions;
 	std::list<Field> fields;
 	std::list<Action> actions;
