@@ -1,156 +1,156 @@
 1
- lcname LIFECYCLE_NAME   Draft to Submit
- lcname ENTITY_NAME AccessPermit
- lcname TRANSITION_ON_SUCCEED state 2
- lcname TRANSITION_ON_FAIL state 1
+ LIFECYCLE_NAME   Draft to Submit
+ ENTITY_NAME AccessPermit
+ TRANSITION_ON_SUCCEED state 2
+ TRANSITION_ON_FAIL state 1
 
 2
- lcname LIFECYCLE_NAME   Submit to Publish
- lcname ENTITY_NAME AccessPermit
- lcname TRANSITION_ON_SUCCEED state 3
- lcname TRANSITION_ON_FAIL state 2
+ LIFECYCLE_NAME   Submit to Publish
+ ENTITY_NAME AccessPermit
+ TRANSITION_ON_SUCCEED state 3
+ TRANSITION_ON_FAIL state 2
 
 3
- lcname LIFECYCLE_NAME   Publish to Return
- lcname ENTITY_NAME AccessPermit
- lcname TRANSITION_ON_SUCCEED state 4
- lcname TRANSITION_ON_FAIL state 3
+ LIFECYCLE_NAME   Publish to Return
+ ENTITY_NAME AccessPermit
+ TRANSITION_ON_SUCCEED state 4
+ TRANSITION_ON_FAIL state 3
 
 4
- lcname LIFECYCLE_NAME   Return to Complete
- lcname ENTITY_NAME AccessPermit
- lcname TRANSITION_ON_SUCCEED state 5
- lcname TRANSITION_ON_FAIL state 4
+ LIFECYCLE_NAME   Return to Complete
+ ENTITY_NAME AccessPermit
+ TRANSITION_ON_SUCCEED state 5
+ TRANSITION_ON_FAIL state 4
 
 5
- lcname LIFECYCLE_NAME   Submit to Deny
- lcname ENTITY_NAME AccessPermit
- lcname TRANSITION_ON_SUCCEED state 6
- lcname TRANSITION_ON_FAIL state 2
+ LIFECYCLE_NAME   Submit to Deny
+ ENTITY_NAME AccessPermit
+ TRANSITION_ON_SUCCEED state 6
+ TRANSITION_ON_FAIL state 2
 
 6
- lcname LIFECYCLE_NAME   Draft to Submit
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 8
- lcname TRANSITION_ON_FAIL state 7
+ LIFECYCLE_NAME   Draft to Submit
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 8
+ TRANSITION_ON_FAIL state 7
 
 7
- lcname LIFECYCLE_NAME   Submit to Approve
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 10
- lcname TRANSITION_ON_FAIL state 8
+ LIFECYCLE_NAME   Submit to Approve
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 10
+ TRANSITION_ON_FAIL state 8
 
 8
- lcname LIFECYCLE_NAME   Submit to Deny
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 9
- lcname TRANSITION_ON_FAIL state 8
+ LIFECYCLE_NAME   Submit to Deny
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 9
+ TRANSITION_ON_FAIL state 8
 
 9
- lcname LIFECYCLE_NAME   Submit to Cancel
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 11
- lcname TRANSITION_ON_FAIL state 8
+ LIFECYCLE_NAME   Submit to Cancel
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 11
+ TRANSITION_ON_FAIL state 8
 
 11
- lcname LIFECYCLE_NAME   Approve to Complete
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 13
- lcname TRANSITION_ON_FAIL state 10
+ LIFECYCLE_NAME   Approve to Complete
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 13
+ TRANSITION_ON_FAIL state 10
 
 13
- lcname LIFECYCLE_NAME   Draft to Submit
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 17
- lcname TRANSITION_ON_FAIL state 16
+ LIFECYCLE_NAME   Draft to Submit
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 17
+ TRANSITION_ON_FAIL state 16
 
 14
- lcname LIFECYCLE_NAME   Submit to Approve
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 18
- lcname TRANSITION_ON_FAIL state 17
+ LIFECYCLE_NAME   Submit to Approve
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 18
+ TRANSITION_ON_FAIL state 17
 
 15
- lcname LIFECYCLE_NAME   Submit to Deny
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 19
- lcname TRANSITION_ON_FAIL state 17
+ LIFECYCLE_NAME   Submit to Deny
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 19
+ TRANSITION_ON_FAIL state 17
 
 16
- lcname LIFECYCLE_NAME   Submit to Cancel
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 20
- lcname TRANSITION_ON_FAIL state 17
+ LIFECYCLE_NAME   Submit to Cancel
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 20
+ TRANSITION_ON_FAIL state 17
 
 17
- lcname LIFECYCLE_NAME   Approve to Complete
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 21
- lcname TRANSITION_ON_FAIL state 18
+ LIFECYCLE_NAME   Approve to Complete
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 21
+ TRANSITION_ON_FAIL state 18
 
 18
- lcname LIFECYCLE_NAME   Complete to Archive
- lcname ENTITY_NAME AccessPermit
- lcname TRANSITION_ON_SUCCEED state 22
- lcname TRANSITION_ON_FAIL state 5
+ LIFECYCLE_NAME   Complete to Archive
+ ENTITY_NAME AccessPermit
+ TRANSITION_ON_SUCCEED state 22
+ TRANSITION_ON_FAIL state 5
 
 19
- lcname LIFECYCLE_NAME   Deny to Archive
- lcname ENTITY_NAME AccessPermit
- lcname TRANSITION_ON_SUCCEED state 22
- lcname TRANSITION_ON_FAIL state 6
+ LIFECYCLE_NAME   Deny to Archive
+ ENTITY_NAME AccessPermit
+ TRANSITION_ON_SUCCEED state 22
+ TRANSITION_ON_FAIL state 6
 
 20
- lcname LIFECYCLE_NAME   Deny to Archive
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 23
- lcname TRANSITION_ON_FAIL state 9
+ LIFECYCLE_NAME   Deny to Archive
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 23
+ TRANSITION_ON_FAIL state 9
 
 21
- lcname LIFECYCLE_NAME   Cancel to Archive
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 23
- lcname TRANSITION_ON_FAIL state 11
+ LIFECYCLE_NAME   Cancel to Archive
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 23
+ TRANSITION_ON_FAIL state 11
 
 23
- lcname LIFECYCLE_NAME   Complete to Archive
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 23
- lcname TRANSITION_ON_FAIL state 13
+ LIFECYCLE_NAME   Complete to Archive
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 23
+ TRANSITION_ON_FAIL state 13
 
 25
- lcname LIFECYCLE_NAME   Deny to Archive
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 24
- lcname TRANSITION_ON_FAIL state 19
+ LIFECYCLE_NAME   Deny to Archive
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 24
+ TRANSITION_ON_FAIL state 19
 
 26
- lcname LIFECYCLE_NAME   Cancel to Archive
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 24
- lcname TRANSITION_ON_FAIL state 20
+ LIFECYCLE_NAME   Cancel to Archive
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 24
+ TRANSITION_ON_FAIL state 20
 
 27
- lcname LIFECYCLE_NAME   Complete to Archive
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 24
- lcname TRANSITION_ON_FAIL state 21
+ LIFECYCLE_NAME   Complete to Archive
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 24
+ TRANSITION_ON_FAIL state 21
 
 37
- lcname LIFECYCLE_NAME   Complete for Independent to Archive
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 23
- lcname TRANSITION_ON_FAIL state 31
+ LIFECYCLE_NAME   Complete for Independent to Archive
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 23
+ TRANSITION_ON_FAIL state 31
 
 38
- lcname LIFECYCLE_NAME   Approve to Cancel
- lcname ENTITY_NAME SwitchOrder
- lcname TRANSITION_ON_SUCCEED state 11
- lcname TRANSITION_ON_FAIL state 10
+ LIFECYCLE_NAME   Approve to Cancel
+ ENTITY_NAME SwitchOrder
+ TRANSITION_ON_SUCCEED state 11
+ TRANSITION_ON_FAIL state 10
 
 39
- lcname LIFECYCLE_NAME   Approved to Cancel
- lcname ENTITY_NAME SwitchRequest
- lcname TRANSITION_ON_SUCCEED state 20
- lcname TRANSITION_ON_FAIL state 18
+ LIFECYCLE_NAME   Approved to Cancel
+ ENTITY_NAME SwitchRequest
+ TRANSITION_ON_SUCCEED state 20
+ TRANSITION_ON_FAIL state 18
 

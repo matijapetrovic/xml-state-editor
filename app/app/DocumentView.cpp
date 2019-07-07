@@ -25,7 +25,7 @@ void DocumentView::init_info_panel() {
 	info_panel_layout = new QVBoxLayout();
 
 	doc_type_label = new QLabel();
-	name_label = new QLabel(model.getName().c_str());
+	name_label = new QLabel(model.get_name().c_str());
 	
 	info_panel_layout->addWidget(doc_type_label);
 	info_panel_layout->addWidget(name_label);
@@ -38,7 +38,7 @@ void DocumentView::init_transition_panel() {
 	transition_panel = new QWidget();
 	transition_panel_layout = new QHBoxLayout();
 
-	for (Action& action : model.getState()->getActions()) {
+	for (Action& action : model.get_state()->get_actions()) {
 		transition_buttons.push_back(new QPushButton(action.get_label().c_str()));
 		// povezi akcije sa tranzicijama
 		transition_panel_layout->addWidget(transition_buttons.back());
@@ -49,8 +49,8 @@ void DocumentView::init_fields_panel() {
 	fields_panel = new QWidget();
 	fields_panel_layout = new QFormLayout();
 
-	for (Field& field : model.getFields()) {
-		field_labels.push_back(new QLabel(field.getName().c_str()));
+	for (Field& field : model.get_fields()) {
+		field_labels.push_back(new QLabel(field.get_name().c_str()));
 		fields.push_back(new FieldView(field));
 		fields_panel_layout->addRow(field_labels.back(), fields.back());
 	}

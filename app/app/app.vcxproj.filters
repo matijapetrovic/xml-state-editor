@@ -75,19 +75,31 @@
     <ClCompile Include="Transition.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlerror.cpp">
-      <Filter>Source Files\parser</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\nikol\Desktop\tinystr.cpp">
-      <Filter>Source Files\parser</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\nikol\Desktop\tinyxml.cpp">
-      <Filter>Source Files\parser</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlparser.cpp">
-      <Filter>Source Files\parser</Filter>
-    </ClCompile>
     <ClCompile Include="parse.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="DocumentView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
       <Filter>Source Files\parser</Filter>
     </ClCompile>
   </ItemGroup>
@@ -121,10 +133,25 @@
     <ClInclude Include="tinyxml.h">
       <Filter>Header Files\parser</Filter>
     </ClInclude>
+    <ClInclude Include="FieldView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="App.h">
       <Filter>Header Files\model</Filter>
+    </QtMoc>
+    <QtMoc Include="DocumentView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FileDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Transition::Transition(){}
+
 
 Transition::Transition(int _entity_id, string _lifecycle_name, EntityName _en_name)
 {

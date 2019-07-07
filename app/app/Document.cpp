@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Document::Document(){}
+
 
 Document::Document(string name) :
 	name(name)
