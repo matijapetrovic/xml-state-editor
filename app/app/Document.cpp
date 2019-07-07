@@ -5,14 +5,16 @@ using namespace std;
 
 
 Document::Document(string name) :
-	name(name)
+	name(name), 
+	valid(false)
 {}
 
 Document::Document(string name, State* s) :
 	name(name),
+	valid(false),
 	current_state(s){}
 
-void Document::add_state(State * s)
+void Document::add_state(State& s)
 {
 	states.push_back(s);
 }
@@ -28,7 +30,7 @@ void Document::add_action(Action& a)
 {
 	actions.push_back(a);
 }
-void Document::set_states(std::list<State*>& stat)
+void Document::set_states(std::list<State>& stat)
 {
 	states = stat;
 }
@@ -52,12 +54,14 @@ list<Transition>& Document::get_transitions()
 {
 	return transitions;
 }
+
+list<State>& Document::get_states()
+{
+	return states;
+}
 list<Field>& Document::get_fields()
 {
 	return fields;
 }
-list<State*>& Document::get_states()
-{
-	return states;
-}
+
 
