@@ -2,10 +2,16 @@
 #ifndef _ACTION_H_
 #define _ACTION_H_
 
+#include <string>
+
 class Action {
 public:
 	Action();
-	//ovde valjda idu nekakve funckije
+	Action(std::string _label);
+
+	std::string get_label() { return label; }
+private:
+	std::string label;
 	
 };
 

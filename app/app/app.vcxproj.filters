@@ -28,34 +28,65 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\model">
+      <UniqueIdentifier>{832a73f8-276f-45d3-b2ae-2944f72aed81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{c9f219a3-95b2-44fb-b550-d7f638c365ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\views">
+      <UniqueIdentifier>{34e265fe-349d-4588-a386-90759010446c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\views">
+      <UniqueIdentifier>{b453ce1c-ecc4-45f6-97f7-0e9db68377e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controllers">
+      <UniqueIdentifier>{291b974e-4989-4bda-9b46-bc6785a6d24c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controllers">
+      <UniqueIdentifier>{65154440-f1f7-4e89-b8d8-ce4a4a892d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui">
+      <UniqueIdentifier>{dd08bb0f-52da-4c1c-bcea-72ce52939455}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui">
+      <UniqueIdentifier>{236b8b92-8027-4ee0-9ab1-90648834b978}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Field.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Document.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="App.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FieldView.cpp">
+      <Filter>Source Files\views</Filter>
     </ClCompile>
-    <ClCompile Include="Action.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="DocumentView.cpp">
+      <Filter>Source Files\views</Filter>
     </ClCompile>
-    <ClCompile Include="Document.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FileDialog.cpp">
+      <Filter>Source Files\gui</Filter>
     </ClCompile>
-    <ClCompile Include="Field.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Transition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="App.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="App.qrc">
@@ -64,19 +95,36 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="Document.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="Field.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
+    <ClInclude Include="FieldView.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="App.h">
+      <Filter>Header Files\model</Filter>
+    </QtMoc>
+    <QtMoc Include="FileDialog.h">
+      <Filter>Header Files\gui</Filter>
+    </QtMoc>
+    <QtMoc Include="DocumentView.h">
+      <Filter>Header Files\views</Filter>
+    </QtMoc>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Header Files\gui</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

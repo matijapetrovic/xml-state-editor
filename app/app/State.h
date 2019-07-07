@@ -13,46 +13,54 @@
 class Transition;
 class Document;
 
+enum EntityName { ACCESS_PERMIT = 0, SWITCH_ORDER, SWITCH_REQUEST };
+
 class State {
 public:
 	enum StateSemantic{INIT=0, SAVE_ENABLED, DELETE_ENABLED, FINAL};
 	
-	State();
-	State(int entity_id, std::string display_name,Document* _document);
-	void addAction(Action a);
-	void addTransition(Transition t);
-	void addMandatoryFields(Field f);
-	void addHideFields(Field f);
-	void addDenyFilds(Field f);
+	State() {}
+	State(int id, std::string _display_name, Document* _document);
 	
-	void setEntityId(int _entity_id) { entity_id= _entity_id; };
-	void setDisplayName(std::string _display_name) { display_name = _display_name; };
-	int getEntityId() { return entity_id; };
-	std::string getDisplayName() { return display_name; };
-	Document* getDocument() { return document; };
-	void setDocument(Document * doc) { document = doc; };
+	// Add to collection
+	void add_action(Action& a);
+	void add_transition(Transition& t);
+	void add_mandatory_field(Field& f);
+	void add_hide_field(Field& f);
+	void add_deny_field(Field& f);
+	
+	// Getters
+	int get_entity_id() { return entity_id; };
+	std::string get_display_name() { return display_name; };
+	EntityName get_entity_name() { return entity_name; }
+	Document* get_document() { return document; };
 
-	std::list<StateSemantic>& getStateSemantic() { return state_semantic; };
-	std::list<Action>& getActions() { return actions; };
-	std::list<Transition>& getTransitions() { return transitions; };
-	std::list<Field>& getMandatoryFields() { return mandatory_fields; };
-	std::list<Field>& getHideFields() { return hide_fields; };
-	std::list<Field>& getDenyModyfingFilds() { return deny_modyfing_filds; };
+	std::list<StateSemantic>& get_state_semantic() { return state_semantic; };
+	std::list<Action>& get_actions() { return actions; };
+	std::list<Transition>& get_transitions() { return transitions; };
+	std::list<Field>& get_mandatory_fields() { return mandatory_fields; };
+	std::list<Field>& get_hide_fields() { return hide_fields; };
+	std::list<Field>& get_deny_fields() { return deny_modyfing_filds; };
 
-	void setStateSemantic(std::list<StateSemantic>& ss);
-	void setActions(std::list<Action>& act);
-	void setTransitions(std::list<Transition>& tr);
-	void setMandatory(std::list<Field>& f);
-	void setHide(std::list<Field>& hide);
-	void setDeny(std::list<Field>& deny);
 
-	/*
-	geteri i seteri jos
-	*/
+	// Setters
+	void set_entity_id(int _entity_id) { entity_id = _entity_id; };
+	void set_display_name(std::string _display_name) { display_name = _display_name; };
+	void set_entity_name(EntityName _entity_name) { entity_name = _entity_name; }
+	void set_document(Document * doc) { document = doc; };
+
+	void set_state_semantic(std::list<StateSemantic>& ss);
+	void set_actions(std::list<Action>& act);
+	void set_transitions(std::list<Transition>& tr);
+	void set_mandatory_fields(std::list<Field>& f);
+	void set_hide_fields(std::list<Field>& hide);
+	void set_deny_fields(std::list<Field>& deny);
+
 
 private:
 	int entity_id;
 	std::string display_name;
+	EntityName entity_name;
 	
 	Document* document;
 	

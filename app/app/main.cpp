@@ -1,10 +1,8 @@
 #include "App.h"
-#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
-	App w;
-	w.show();
+	App a(argc, argv);
+	a.show_document_dialog();
 	return a.exec();
 }

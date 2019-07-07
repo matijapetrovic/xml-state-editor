@@ -13,26 +13,26 @@ class Transition;
 
 class Document {
 public:
-	Document();
-	Document(std::string name);
-	Document(std::string name, State* s);
+	Document() {}
+	Document(std::string _name);
+	Document(std::string _name, State* s);
 	
-	void addTransition(Transition t);
-	void addField(Field f);
-	void addAction(Action a);
+	void add_transition(Transition& t);
+	void add_field(Field& f);
+	void add_action(Action& a);
 	
-	void setName(std::string _name) { name = _name; };
-	void setState(State * _state) { state = _state; };
+	void set_name(std::string _name) { name = _name; };
+	void set_state(State * _state) { state = _state; };
 	
-	void setTransitions(std::list<Transition>& tran);
-	void setFields(std::list<Field>& fil);
-	void setActions(std::list<Action>& ac);
+	void set_transitions(std::list<Transition>& tran);
+	void set_fields(std::list<Field>& fil);
+	void set_actions(std::list<Action>& ac);
 	
-	std::list<Action>& getActions();
-	std::list<Transition>& getTransitions();
-	std::list<Field>& getFields();
-	std::string getName() { return name; };
-	State* getState() { return state; };
+	std::list<Action>& get_actions();
+	std::list<Transition>& get_transitions();
+	std::list<Field>& get_fields();
+	std::string get_name() { return name; };
+	State* get_state() { return state; };
 
 private:
 	std::string name;

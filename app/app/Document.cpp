@@ -10,39 +10,39 @@ Document::Document(string name, State* s) :
 	name(name),
 	state(s){}
 
-void Document::addTransition(Transition t)
+void Document::add_transition(Transition& t)
 {
 	transitions.push_back(t);
 }
-void Document::addField(Field f)
+void Document::add_field(Field& f)
 {
 	fields.push_back(f);
 }
-void Document::addAction(Action a)
+void Document::add_action(Action& a)
 {
 	actions.push_back(a);
 }
-void Document::setTransitions(list<Transition> &tran)
+void Document::set_transitions(list<Transition> &tran)
 {
 	transitions = tran;
 }
-void Document::setFields(list<Field>& fil)
+void Document::set_fields(list<Field>& fil)
 {
 	fields = fil;
 }
-void Document::setActions(list<Action>& ac)
+void Document::set_actions(list<Action>& ac)
 {
 	actions = ac;
 }
-list<Action>& Document::getActions()
+list<Action>& Document::get_actions()
 {
 	return actions;
 }
-list<Transition>& Document::getTransitions()
+list<Transition>& Document::get_transitions()
 {
 	return transitions;
 }
-list<Field>& Document::getFields()
+list<Field>& Document::get_fields()
 {
 	return fields;
 }
