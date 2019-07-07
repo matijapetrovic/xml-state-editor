@@ -2,33 +2,35 @@
 #define _TRANSITION_H_
 
 #include <string>
-
+#include "enum.h"
 #include "Document.h"
 #include "State.h"
 
-
-enum EntityName { ACCESS_PERMIT = 0, SWITCH_ORDER, SWITCH_REQUEST };
-
+// Forward declarations
 class State;
 class Document;
 
+
+
 class Transition {
 public:
-	Transition();
-	Transition(int entity_id, std::string lifecycle_name, EntityName en_name);
-	Transition(int entity_id, std::string lifecycle_name, EntityName en_name, State* on_succeed, State* on_fail);
+	Transition() {}
+	Transition(int id, std::string name, EntityName entity);
+	Transition(int id, std::string name, EntityName entity, State* succeed, State* fail);
 	
+	// Getters
+	int get_entity_id();
+	std::string get_lifecycle_name();
+	EntityName get_entity_name();
+	State* get_on_fail();
+	State* get_on_succeed();
 
-	int getEntityId();
-	std::string getLifecycleName();
-	EntityName getEntityName();
-	void setEntityId(int id);
-	void setLifecycleName(std::string name);
-	void setEntityName(EntityName entity);
-	void setOnSucceed(State* onsucceed);
-	void setOnFail(State* onfail);
-	State* getOnFail();
-	State* getOnSucceed();
+	// Setters
+	void set_entity_id(int id);
+	void set_lifecycle_name(std::string name);
+	void set_entity_name(EntityName entity);
+	void set_on_succeed(State* succeed);
+	void set_on_fail(State* fail);
 
 private:
 	int entity_id;
