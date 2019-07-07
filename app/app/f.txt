@@ -1,0 +1,156 @@
+1
+ lcname LIFECYCLE_NAME   Draft to Submit
+ lcname ENTITY_NAME AccessPermit
+ lcname TRANSITION_ON_SUCCEED state 2
+ lcname TRANSITION_ON_FAIL state 1
+
+2
+ lcname LIFECYCLE_NAME   Submit to Publish
+ lcname ENTITY_NAME AccessPermit
+ lcname TRANSITION_ON_SUCCEED state 3
+ lcname TRANSITION_ON_FAIL state 2
+
+3
+ lcname LIFECYCLE_NAME   Publish to Return
+ lcname ENTITY_NAME AccessPermit
+ lcname TRANSITION_ON_SUCCEED state 4
+ lcname TRANSITION_ON_FAIL state 3
+
+4
+ lcname LIFECYCLE_NAME   Return to Complete
+ lcname ENTITY_NAME AccessPermit
+ lcname TRANSITION_ON_SUCCEED state 5
+ lcname TRANSITION_ON_FAIL state 4
+
+5
+ lcname LIFECYCLE_NAME   Submit to Deny
+ lcname ENTITY_NAME AccessPermit
+ lcname TRANSITION_ON_SUCCEED state 6
+ lcname TRANSITION_ON_FAIL state 2
+
+6
+ lcname LIFECYCLE_NAME   Draft to Submit
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 8
+ lcname TRANSITION_ON_FAIL state 7
+
+7
+ lcname LIFECYCLE_NAME   Submit to Approve
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 10
+ lcname TRANSITION_ON_FAIL state 8
+
+8
+ lcname LIFECYCLE_NAME   Submit to Deny
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 9
+ lcname TRANSITION_ON_FAIL state 8
+
+9
+ lcname LIFECYCLE_NAME   Submit to Cancel
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 11
+ lcname TRANSITION_ON_FAIL state 8
+
+11
+ lcname LIFECYCLE_NAME   Approve to Complete
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 13
+ lcname TRANSITION_ON_FAIL state 10
+
+13
+ lcname LIFECYCLE_NAME   Draft to Submit
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 17
+ lcname TRANSITION_ON_FAIL state 16
+
+14
+ lcname LIFECYCLE_NAME   Submit to Approve
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 18
+ lcname TRANSITION_ON_FAIL state 17
+
+15
+ lcname LIFECYCLE_NAME   Submit to Deny
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 19
+ lcname TRANSITION_ON_FAIL state 17
+
+16
+ lcname LIFECYCLE_NAME   Submit to Cancel
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 20
+ lcname TRANSITION_ON_FAIL state 17
+
+17
+ lcname LIFECYCLE_NAME   Approve to Complete
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 21
+ lcname TRANSITION_ON_FAIL state 18
+
+18
+ lcname LIFECYCLE_NAME   Complete to Archive
+ lcname ENTITY_NAME AccessPermit
+ lcname TRANSITION_ON_SUCCEED state 22
+ lcname TRANSITION_ON_FAIL state 5
+
+19
+ lcname LIFECYCLE_NAME   Deny to Archive
+ lcname ENTITY_NAME AccessPermit
+ lcname TRANSITION_ON_SUCCEED state 22
+ lcname TRANSITION_ON_FAIL state 6
+
+20
+ lcname LIFECYCLE_NAME   Deny to Archive
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 23
+ lcname TRANSITION_ON_FAIL state 9
+
+21
+ lcname LIFECYCLE_NAME   Cancel to Archive
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 23
+ lcname TRANSITION_ON_FAIL state 11
+
+23
+ lcname LIFECYCLE_NAME   Complete to Archive
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 23
+ lcname TRANSITION_ON_FAIL state 13
+
+25
+ lcname LIFECYCLE_NAME   Deny to Archive
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 24
+ lcname TRANSITION_ON_FAIL state 19
+
+26
+ lcname LIFECYCLE_NAME   Cancel to Archive
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 24
+ lcname TRANSITION_ON_FAIL state 20
+
+27
+ lcname LIFECYCLE_NAME   Complete to Archive
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 24
+ lcname TRANSITION_ON_FAIL state 21
+
+37
+ lcname LIFECYCLE_NAME   Complete for Independent to Archive
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 23
+ lcname TRANSITION_ON_FAIL state 31
+
+38
+ lcname LIFECYCLE_NAME   Approve to Cancel
+ lcname ENTITY_NAME SwitchOrder
+ lcname TRANSITION_ON_SUCCEED state 11
+ lcname TRANSITION_ON_FAIL state 10
+
+39
+ lcname LIFECYCLE_NAME   Approved to Cancel
+ lcname ENTITY_NAME SwitchRequest
+ lcname TRANSITION_ON_SUCCEED state 20
+ lcname TRANSITION_ON_FAIL state 18
+

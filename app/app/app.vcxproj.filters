@@ -29,35 +29,38 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Header Files\model">
-      <UniqueIdentifier>{832a73f8-276f-45d3-b2ae-2944f72aed81}</UniqueIdentifier>
+      <UniqueIdentifier>{abef931d-bc6a-4019-a088-f9ca14fadcc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view">
+      <UniqueIdentifier>{97639e2b-e034-40a2-94b2-8fb101703498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controller">
+      <UniqueIdentifier>{27812d64-ebf8-40e4-81d1-b40436c47db0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\model">
-      <UniqueIdentifier>{c9f219a3-95b2-44fb-b550-d7f638c365ac}</UniqueIdentifier>
+      <UniqueIdentifier>{89eb2733-12c7-4e12-a27c-a70bec3d8159}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\views">
-      <UniqueIdentifier>{34e265fe-349d-4588-a386-90759010446c}</UniqueIdentifier>
+    <Filter Include="Source Files\view">
+      <UniqueIdentifier>{0a40e419-abb8-4f0e-ab7d-edae500ccd4d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\views">
-      <UniqueIdentifier>{b453ce1c-ecc4-45f6-97f7-0e9db68377e9}</UniqueIdentifier>
+    <Filter Include="Source Files\controller">
+      <UniqueIdentifier>{61fea4ae-8055-46d7-bf5f-227f54014315}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\controllers">
-      <UniqueIdentifier>{291b974e-4989-4bda-9b46-bc6785a6d24c}</UniqueIdentifier>
+    <Filter Include="Header Files\parser">
+      <UniqueIdentifier>{f3614192-ae7a-49d2-b191-15dfe4e36caa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\controllers">
-      <UniqueIdentifier>{65154440-f1f7-4e89-b8d8-ce4a4a892d26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui">
-      <UniqueIdentifier>{dd08bb0f-52da-4c1c-bcea-72ce52939455}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui">
-      <UniqueIdentifier>{236b8b92-8027-4ee0-9ab1-90648834b978}</UniqueIdentifier>
+    <Filter Include="Source Files\parser">
+      <UniqueIdentifier>{027b3db6-ab93-4a6d-a7ad-d2788d3f77b2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Transition.cpp">
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Action.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
+    <ClCompile Include="App.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp">
@@ -66,26 +69,26 @@
     <ClCompile Include="Document.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="App.cpp">
+    <ClCompile Include="State.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="Action.cpp">
+    <ClCompile Include="Transition.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
-      <Filter>Source Files\gui</Filter>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlerror.cpp">
+      <Filter>Source Files\parser</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinystr.cpp">
+      <Filter>Source Files\parser</Filter>
     </ClCompile>
-    <ClCompile Include="FieldView.cpp">
-      <Filter>Source Files\views</Filter>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxml.cpp">
+      <Filter>Source Files\parser</Filter>
     </ClCompile>
-    <ClCompile Include="DocumentView.cpp">
-      <Filter>Source Files\views</Filter>
+    <ClCompile Include="C:\Users\nikol\Desktop\tinyxmlparser.cpp">
+      <Filter>Source Files\parser</Filter>
     </ClCompile>
-    <ClCompile Include="FileDialog.cpp">
-      <Filter>Source Files\gui</Filter>
+    <ClCompile Include="parse.cpp">
+      <Filter>Source Files\parser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,34 +100,31 @@
     <ClInclude Include="Action.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="Document.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
     <ClInclude Include="Field.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="FieldView.h">
-      <Filter>Header Files\views</Filter>
+    <ClInclude Include="Document.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="parse.h">
+      <Filter>Header Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>Header Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Header Files\parser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="App.h">
       <Filter>Header Files\model</Filter>
-    </QtMoc>
-    <QtMoc Include="FileDialog.h">
-      <Filter>Header Files\gui</Filter>
-    </QtMoc>
-    <QtMoc Include="DocumentView.h">
-      <Filter>Header Files\views</Filter>
-    </QtMoc>
-    <QtMoc Include="MainWindow.h">
-      <Filter>Header Files\gui</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>
