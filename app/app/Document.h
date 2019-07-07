@@ -23,7 +23,7 @@ public:
 	void add_state(State * s);
 	
 	void set_name(std::string _name) { name = _name; };
-	void set_current_state(State * _state) { state = _state; };
+	void set_current_state(State * _state) { current_state = _state; };
 	
 	void set_states(std::list<State*>& stat);
 	void set_transitions(std::list<Transition>& tran);

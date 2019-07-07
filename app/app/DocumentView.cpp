@@ -38,7 +38,7 @@ void DocumentView::init_transition_panel() {
 	transition_panel = new QWidget();
 	transition_panel_layout = new QHBoxLayout();
 
-	for (Action& action : model.get_state()->get_actions()) {
+	for (Action& action : model.get_current_state()->get_actions()) {
 		transition_buttons.push_back(new QPushButton(action.get_label().c_str()));
 		// povezi akcije sa tranzicijama
 		transition_panel_layout->addWidget(transition_buttons.back());
