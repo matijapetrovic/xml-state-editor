@@ -52,6 +52,11 @@ list<Transition>& Document::get_transitions()
 {
 	return transitions;
 }
+
+list<State*>& Document::get_states()
+{
+	return states;
+}
 list<Field>& Document::get_fields()
 {
 	return fields;

@@ -45,7 +45,6 @@ void Parser::readTransitions(string filename) {
 
 	TiXmlElement *transition = root->FirstChildElement("Transition");
 
-	ofstream os("f.txt");
 	for (TiXmlElement* elem = transition->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement())
 	{
 		
@@ -57,7 +56,6 @@ void Parser::readTransitions(string filename) {
 			attr = elem->Attribute("entityId");
 			if (attr != NULL) {
 				int id = strToInt(attr);
-				os << id << endl;
 				transition.set_entity_id(id);
 			}
 		}
@@ -68,10 +66,11 @@ void Parser::readTransitions(string filename) {
 			{
 				attr = elem2->Attribute("model");
 				if (attr != NULL) {
-					// ako je lifecycle name naziv modela onda setujem atribut
-					transition.set_lifecycle_name(attr);
-					os << " " << attr;
+					/*
+						Setting lifecycle name
 					
+					*/
+				
 				}
 			}
 			for (TiXmlElement* elem3 = elem2->FirstChildElement(); elem3 != NULL; elem3 = elem3->NextSiblingElement()) {
@@ -81,25 +80,37 @@ void Parser::readTransitions(string filename) {
 				{
 					attr2 = elem3->Attribute("name");
 					if (attr2 != NULL) {
-						os << " " << attr2;
-						/* Ovde sam dobio atribute od svih property-ja*/
+						/*
+							Ako mi bude trebala informacija da tranzicija
+							sadrzi ,,STATE"
+						
+						*/
+						
 					}
 					attr2 = elem3->Attribute("entityId");
 					if (attr2 != NULL) {
-						os << " " << attr2;
-						/* Ovde sam dobio atribute od svih property-ja*/
+						//ovde postavljam onsucceed i onfailed int
+						if (strcmp(attr, "TRANSITION_ON_SUCCEED ")== 0) {
+							transition.set_on_succeed_num(strToInt(attr2));
+						}
+						else if (strcmp(attr, "TRANSITION_ON_FAIL  ")== 0) {
+							transition.set_on_failed_num(strToInt(attr2));
+						}
 					}
+					// prolazim kroz sve ispise ukliko value ima samo tekst atribut
 					for (TiXmlNode* e = elem3->FirstChild(); e != NULL; e = e->NextSibling())
 					{
 						TiXmlText* text = e->ToText();
 						if (text == NULL)
 							continue;
 						string t = text->Value();
-						os << "   " << t;
+						if (strcmp(attr, "LIFECYCLE_NAME") == 0) {
+							transition.set_lifecycle_name(t);
+						}
 
 					}
 					
-					//ovde ide if u slucaju da je tekst
+				
 
 				}else if (elemName == "EnumValue")
 				{	
@@ -123,15 +134,10 @@ void Parser::readTransitions(string filename) {
 							}
 							
 						}
-						
-						os << " "<< t;
-						
 					}
 				}
-			
-			}os << endl;
-
-		}os << endl;
+			}
+		}
 	
 		document.add_transition(transition);
 	}
@@ -225,3 +231,50 @@ void Parser::readStates(string filename)
 		}
 	}
 }
+
+
+void Parser::fill_states() {
+	for each (State* state in document.get_states())
+	{
+		for each (int i in (*state).get_transitions_ids()){
+			for each (Transition t in (*state).get_transitions()) {
+				if (i == t.get_entity_id()) {
+					state->add_transition(t);
+					break;
+				}	
+			}
+		}
+	}
+
+}
+
+void Parser::fill_transitions() {
+	for each (Transition trans in document.get_transitions())
+	{
+		for each (State* state in document.get_states())
+		{
+			if ((*state).get_entity_id() == trans.get_on_succeed_num()) {
+				trans.set_on_succeed(state);
+			}
+			else if ((*state).get_entity_id() == trans.get_on_failed_num()) {
+				trans.set_on_fail(state);
+			}
+
+		}
+	}
+
+}
+
+void Parser::connect() {
+	
+	fill_states();
+	fill_transitions();
+}
+
+void Parser::read_and_connect(string filename) {
+
+	readTransitions(filename);
+	readStates(filename);
+	connect();
+}
+

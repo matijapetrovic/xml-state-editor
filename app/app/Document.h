@@ -33,6 +33,7 @@ public:
 	std::list<State*>& get_states();
 	std::list<Action>& get_actions();
 	std::list<Transition>& get_transitions();
+	std::list<State*>& get_states();
 	std::list<Field>& get_fields();
 	std::string get_name() { return name; };
 	State* get_current_state() { return current_state; };

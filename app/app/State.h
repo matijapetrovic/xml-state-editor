@@ -39,7 +39,7 @@ public:
 	std::list<Field>& get_mandatory_fields() { return mandatory_fields; };
 	std::list<Field>& get_hide_fields() { return hide_fields; };
 	std::list<Field>& get_deny_fields() { return deny_modyfing_filds; };
-
+	std::list<int>& get_transitions_ids() { return transitons_ids; };
 
 	// Setters
 	void set_entity_id(int _entity_id) { entity_id = _entity_id; };
