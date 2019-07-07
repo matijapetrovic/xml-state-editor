@@ -55,3 +55,8 @@ void State::add_deny_field(Field& deny)
 {
 	deny_modyfing_filds.push_back(deny);
 }
+
+void State::add_transition_id(int i)
+{
+	transitions_ids.push_back(i);
+}

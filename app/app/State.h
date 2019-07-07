@@ -25,6 +25,7 @@ public:
 	void add_mandatory_field(Field& f);
 	void add_hide_field(Field& f);
 	void add_deny_field(Field& f);
+	void add_transition_id(int i);
 	
 	// Getters
 	int get_entity_id() { return entity_id; };
@@ -43,6 +44,7 @@ public:
 	// Setters
 	void set_entity_id(int _entity_id) { entity_id = _entity_id; };
 	void set_display_name(std::string _display_name) { display_name = _display_name; };
+	void set_lifecycle_name(std::string _lifecycle_name) { lifecycle_name = _lifecycle_name; };
 	void set_entity_name(EntityName _entity_name) { entity_name = _entity_name; }
 	void set_document(Document * doc) { document = doc; };
 
@@ -57,10 +59,12 @@ public:
 private:
 	int entity_id;
 	std::string display_name;
+	std::string lifecycle_name;
 	EntityName entity_name;
 	
 	Document* document;
 	
+	std::list<int> transitions_ids;
 	std::list<StateSemantic> state_semantic;
 	std::list<Action> actions;
 	std::list<Transition> transitions;
