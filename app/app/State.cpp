@@ -60,3 +60,8 @@ void State::add_transition_id(int i)
 {
 	transitions_ids.push_back(i);
 }
+
+void State::add_state_semantic(StateSemantic s)
+{
+	state_semantic.push_back(s);
+}

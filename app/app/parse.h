@@ -36,7 +36,7 @@ public:
 	bool valid_file(string filename);
 	void readTransitions(string filename);
 	void readStates(string filename);
-	void read_and_connect(string filename);
+	Document* read_and_connect(string filename);
 	
 
 

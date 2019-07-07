@@ -26,6 +26,7 @@ public:
 	void add_hide_field(Field& f);
 	void add_deny_field(Field& f);
 	void add_transition_id(int i);
+	void add_state_semantic(StateSemantic s);
 	
 	// Getters
 	int get_entity_id() { return entity_id; };
@@ -39,7 +40,7 @@ public:
 	std::list<Field>& get_mandatory_fields() { return mandatory_fields; };
 	std::list<Field>& get_hide_fields() { return hide_fields; };
 	std::list<Field>& get_deny_fields() { return deny_modyfing_filds; };
-	std::list<int>& get_transitions_ids() { return transitons_ids; };
+	std::list<int>& get_transitions_ids() { return transitions_ids; };
 
 	// Setters
 	void set_entity_id(int _entity_id) { entity_id = _entity_id; };

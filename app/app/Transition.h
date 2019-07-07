@@ -46,4 +46,4 @@ private:
 	int on_failed_num;
 };
 
-#endif // _TRANSITION_H_
+#endif //_TRANSITION_H_

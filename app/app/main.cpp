@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
 	App a(argc, argv);
 	a.show_document_dialog();
 	Parser p;
-	p.readTransitions("Lifecycle.xml");
-
+	Document* doc = p.read_and_connect("Lifecycle.xml");
 	return a.exec();
 }
