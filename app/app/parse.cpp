@@ -207,8 +207,26 @@ void Parser::readStates(string filename)
 					string t = text->Value();
 					const char* t1 = t.c_str();
 					os << " " << t;
+
 					if (strcmp(attr, "LIFECYCLE_NAME") == 0) {
 						state.set_lifecycle_name(t1);
+					}
+					else if (strcmp(attr, "STATE_DENY_MODIFYING_FIELDS") == 0) {
+
+						Field field;
+						field.set_name(t);
+
+						state.add_deny_field(field);
+					}
+					else if (strcmp(attr, "STATE_HIDE_FIELDS") == 0) {
+						Field field;
+						field.set_name(t);
+						state.add_hide_field(field);
+					}
+					else if (strcmp(attr, "STATE_MANDATORY_FIELDS") == 0) {
+						Field field;
+						field.set_name(t);
+						state.add_mandatory_field(field);
 					}
 					else if (strcmp(attr, "ENTITY_NAME") == 0) {
 						if (strcmp(t1, "AccessPermit") == 0) {
@@ -227,6 +245,7 @@ void Parser::readStates(string filename)
 					}
 					else if (strcmp(attr, "STATE_SEMANTIC")) {
 						if (strcmp(t1, "Init") == 0) {
+							document.set_valid(true);
 							state.add_state_semantic(State::StateSemantic::INIT);
 						}
 						else if (strcmp(t1, "SaveEnabled") == 0) {
@@ -240,24 +259,7 @@ void Parser::readStates(string filename)
 						}
 					}
 
-					else {
-
-						Field field;
-						field.set_name(t);
-						//sta jos treba??
-						if (strcmp(attr, "STATE_DENY_MODIFYING_FIELDS")) {
-							
-							state.add_deny_field(field);
-						}
-						else if (strcmp(attr, "STATE_HIDE_FIELDS")) {
-
-							state.add_hide_field(field);
-						}
-						else if (strcmp(attr, "STATE_MANDATORY_FIELDS")) {
-
-							state.add_mandatory_field(field);
-						}
-					}
+					
 				}
 				
 			}
@@ -275,7 +277,7 @@ void Parser::fill_states() {
 	for each (State state in document.get_states())
 	{
 		for each (int i in (state).get_transitions_ids()){
-			for each (Transition t in (state).get_transitions()) {
+			for each (Transition t in document.get_transitions()) {
 				if (i == t.get_entity_id()) {
 					state.add_transition(t);
 					break;
@@ -293,6 +295,7 @@ void Parser::fill_transitions() {
 		{
 			if ((state).get_entity_id() == trans.get_on_succeed_num()) {
 				trans.set_on_succeed(&state);
+
 			}
 			else if ((state).get_entity_id() == trans.get_on_failed_num()) {
 				trans.set_on_fail(&state);
@@ -307,12 +310,17 @@ void Parser::connect() {
 	
 	fill_states();
 	fill_transitions();
+	
+	
 }
 
 Document* Parser::read_and_connect(string filename) {
 
 	readTransitions(filename);
 	readStates(filename);
+	if (!document.is_valid()) {
+		throw InvalidFileException();
+	}
 	connect();
 	return &document;
 }

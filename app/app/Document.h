@@ -13,7 +13,7 @@ class Transition;
 
 class Document {
 public:
-	Document() {}
+	Document() :valid(false) {};
 	Document(std::string _name);
 	Document(std::string _name, State* s);
 	
@@ -25,11 +25,13 @@ public:
 	void set_name(std::string _name) { name = _name; };
 	void set_current_state(State * _state) { current_state = _state; };
 	
+	void set_valid(bool b) { valid = b; };
 	void set_states(std::list<State>& stat);
 	void set_transitions(std::list<Transition>& tran);
 	void set_fields(std::list<Field>& fil);
 	void set_actions(std::list<Action>& ac);
 	
+	bool is_valid() { return valid; };
 	std::list<Action>& get_actions();
 	std::list<Transition>& get_transitions();
 	std::list<State>& get_states();
@@ -42,6 +44,7 @@ private:
 	
 	State* current_state;
 	
+	bool valid;
 	std::list<State> states;
 	std::list<Transition> transitions;
 	std::list<Field> fields;
