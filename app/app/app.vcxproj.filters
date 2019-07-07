@@ -52,6 +52,12 @@
     <Filter Include="Source Files\parser">
       <UniqueIdentifier>{027b3db6-ab93-4a6d-a7ad-d2788d3f77b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui">
+      <UniqueIdentifier>{0675f7e2-86e1-49ab-b2d1-f10296c72c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui">
+      <UniqueIdentifier>{c6d28b27-8c53-472a-81b4-210c8d4ceb38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,18 +84,6 @@
     <ClCompile Include="parse.cpp">
       <Filter>Source Files\parser</Filter>
     </ClCompile>
-    <ClCompile Include="DocumentView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FileDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tinystr.cpp">
       <Filter>Source Files\parser</Filter>
     </ClCompile>
@@ -101,6 +95,18 @@
     </ClCompile>
     <ClCompile Include="tinyxml.cpp">
       <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="FileDialog.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldView.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
+    <ClCompile Include="DocumentView.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,10 +140,10 @@
       <Filter>Header Files\parser</Filter>
     </ClInclude>
     <ClInclude Include="FieldView.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\view</Filter>
     </ClInclude>
     <ClInclude Include="enum.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -145,13 +151,13 @@
       <Filter>Header Files\model</Filter>
     </QtMoc>
     <QtMoc Include="DocumentView.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\view</Filter>
     </QtMoc>
     <QtMoc Include="FileDialog.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\gui</Filter>
     </QtMoc>
     <QtMoc Include="MainWindow.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\gui</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

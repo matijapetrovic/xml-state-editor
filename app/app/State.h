@@ -1,18 +1,15 @@
 #ifndef  _STATE_H_
 #define  _STATE_H_
 
-#include <string>
 #include <list>
 
 #include "Action.h"
 #include "Transition.h"
-#include "Document.h"
 #include "Field.h"
 
 
 class Transition;
 class Document;
-
 
 
 class State {
