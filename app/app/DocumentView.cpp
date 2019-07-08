@@ -49,7 +49,7 @@ void DocumentView::init_fields_panel() {
 	fields_panel = new QWidget();
 	fields_panel_layout = new QFormLayout();
 
-	for (Field& field : model.get_fields()) {
+	for (const Field& field : model.get_fields()) {
 		field_labels.push_back(new QLabel(field.get_name().c_str()));
 		fields.push_back(new FieldView(field));
 		fields_panel_layout->addRow(field_labels.back(), fields.back());

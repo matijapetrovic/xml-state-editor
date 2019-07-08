@@ -154,6 +154,7 @@ void Parser::readStates(string filename)
 		throw InvalidFileException();
 	}
 	bool valid = false;
+	bool initFound = false;
 	TiXmlDocument doc(filename.c_str());
 	doc.LoadFile();
 	TiXmlElement* root = doc.FirstChildElement();
@@ -253,6 +254,7 @@ void Parser::readStates(string filename)
 					else if (strcmp(attr, "STATE_SEMANTIC") == 0) {
 						if (strcmp(t1, "Init") == 0) {
 							valid = true;
+							initFound = true;
 							state.add_state_semantic(State::StateSemantic::INIT);
 						}
 						else if (strcmp(t1, "SaveEnabled") == 0) {
@@ -274,6 +276,10 @@ void Parser::readStates(string filename)
 
 		}
 		document->add_state(state);
+		if (initFound) {
+			document->set_current_state(&(document->get_states().back()));
+			initFound = false;
+		}
 	}
 	os.close();
 	if (!valid) {

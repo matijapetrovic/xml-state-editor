@@ -26,7 +26,6 @@ public:
 	void add_mandatory_field(Field& f);
 	void add_hide_field(Field& f);
 	void add_deny_field(Field& f);
-	void add_transition_id(int i);
 	void add_state_semantic(StateSemantic s);
 	
 	// Getters
