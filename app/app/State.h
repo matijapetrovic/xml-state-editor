@@ -9,7 +9,6 @@
 
 
 class Transition;
-class Document;
 
 
 class State {
@@ -34,7 +33,6 @@ public:
 	std::string get_display_name() { return display_name; };
 	EntityName get_entity_name() { return entity_name; };
 	std::string get_lifecycle_name() { return lifecycle_name; };
-	Document* get_document() { return document; };
 
 	std::list<StateSemantic>& get_state_semantic() { return state_semantic; };
 	std::list<Action>& get_actions() { return actions; };
@@ -49,7 +47,6 @@ public:
 	void set_display_name(std::string _display_name) { display_name = _display_name; };
 	void set_lifecycle_name(std::string _lifecycle_name) { lifecycle_name = _lifecycle_name; };
 	void set_entity_name(EntityName _entity_name) { entity_name = _entity_name; }
-	void set_document(Document * doc) { document = doc; };
 
 	void set_state_semantic(std::list<StateSemantic>& ss);
 	void set_actions(std::list<Action>& act);
@@ -64,8 +61,6 @@ private:
 	std::string display_name;
 	std::string lifecycle_name;
 	EntityName entity_name;
-	
-	Document* document;
 	
 	std::list<int> transitions_ids;
 	std::list<StateSemantic> state_semantic;
