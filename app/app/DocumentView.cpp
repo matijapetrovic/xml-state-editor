@@ -17,7 +17,7 @@ DocumentView::DocumentView(Document & _model, MainController& _controller) :
 
 	layout->addWidget(info_panel, 0, 0, 1, 1);
 	layout->addWidget(transition_panel, 0, 1, 1, 1);
-	layout->addWidget(fields_panel, 1, 1, 2, 2);
+	layout->addWidget(fields_panel, 1, 0, 2, 4);
 	setLayout(layout);
 
 	update_view();
@@ -50,11 +50,11 @@ void DocumentView::init_info_panel()
 	doc_type_label->setStyleSheet("font-weight:bold;");
 	info_panel_layout->addWidget(doc_type_label);
 
+	info_panel_layout->setAlignment({ Qt::AlignLeft, Qt::AlignTop });
+
 	name_label = new QLabel(("Current state: " + model.get_current_state()->get_display_name()).c_str());
 	name_label->setStyleSheet("font-weight:bold;");
 	info_panel_layout->addWidget(name_label);
-
-	info_panel_layout->addStretch();
 
 	info_panel->setLayout(info_panel_layout);
 }
@@ -64,14 +64,14 @@ void DocumentView::init_transition_panel()
 	transition_panel = new QWidget();
 	transition_panel_layout = new QHBoxLayout();
 
+	transition_panel_layout->setAlignment({ Qt::AlignLeft, Qt::AlignTop });
+
 	for (Action& action : model.get_current_state()->get_actions()) {
 		transition_buttons.push_back(new ActionView(action));
 		// povezi akcije sa tranzicijama
 		transition_panel_layout->addWidget(transition_buttons.back());
 		connect(transition_buttons.back(), SIGNAL(released()), this, SLOT(handle_button_pushed ()));
 	}
-
-	transition_panel_layout->addStretch();
 
 	transition_panel->setLayout(transition_panel_layout);
 }
