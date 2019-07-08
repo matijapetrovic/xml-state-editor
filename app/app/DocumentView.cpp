@@ -9,6 +9,7 @@ DocumentView::DocumentView(Document & _model, MainController& _controller) :
 	layout(new QGridLayout())
 {
 	connect(this, &DocumentView::action_button_pushed, &controller, &MainController::do_transition);
+	connect(&model, &Document::model_updated, this, &DocumentView::handle_model_update);
 
 	init_info_panel();
 	init_transition_panel();
@@ -33,6 +34,11 @@ void DocumentView::update_view()
 {
 	reset_fields();
 	update_fields();
+}
+
+void DocumentView::handle_model_update()
+{
+	update_view();
 }
 
 void DocumentView::init_info_panel() 
