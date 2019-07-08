@@ -240,10 +240,10 @@ void Parser::readStates(string filename)
 						}
 
 					}
-					else if (strcmp(attr, "DISPLAY_NAME")) {
+					else if (strcmp(attr, "DISPLAY_NAME") == 0) {
 						state.set_display_name(t1);
 					}
-					else if (strcmp(attr, "STATE_SEMANTIC")) {
+					else if (strcmp(attr, "STATE_SEMANTIC") == 0) {
 						if (strcmp(t1, "Init") == 0) {
 							document.set_valid(true);
 							state.add_state_semantic(State::StateSemantic::INIT);
@@ -274,10 +274,12 @@ void Parser::readStates(string filename)
 
 
 void Parser::fill_states() {
-	for each (State state in document.get_states())
+
+
+	for (State& state : document.get_states())
 	{
-		for each (int i in (state).get_transitions_ids()){
-			for each (Transition t in document.get_transitions()) {
+		for (int i : state.get_transitions_ids()){
+			for (auto& t : document.get_transitions()) {
 				if (i == t.get_entity_id()) {
 					state.add_transition(t);
 					break;
@@ -285,13 +287,15 @@ void Parser::fill_states() {
 			}
 		}
 	}
+	
 
 }
 
 void Parser::fill_transitions() {
-	for each (Transition trans in document.get_transitions())
+
+	for (Transition& trans : document.get_transitions())
 	{
-		for each (State state in document.get_states())
+		for (State& state : document.get_states())
 		{
 			if ((state).get_entity_id() == trans.get_on_succeed_num()) {
 				trans.set_on_succeed(&state);
@@ -306,10 +310,23 @@ void Parser::fill_transitions() {
 
 }
 
+void Parser::fill_actions()
+{
+	for (State& state : document.get_states()) {
+		for (Transition& transition : state.get_transitions()) {
+			string name = (*transition.get_on_succeed()).get_lifecycle_name();
+			Action action(name);
+			document.add_action(action);
+			state.add_action(action);
+		}
+	}
+}
+
 void Parser::connect() {
 	
 	fill_states();
 	fill_transitions();
+	fill_actions();
 	
 	
 }

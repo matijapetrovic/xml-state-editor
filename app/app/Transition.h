@@ -14,6 +14,8 @@ public:
 	Transition() {}
 	Transition(int id, std::string name, EntityName entity);
 	Transition(int id, std::string name, EntityName entity, State* succeed, State* fail);
+	Transition(const Transition& t);
+	~Transition() {}
 	
 	// Getters
 	int get_entity_id();

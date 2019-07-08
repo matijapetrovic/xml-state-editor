@@ -14,11 +14,11 @@ Document::Document(string name, State* s) :
 	valid(false),
 	current_state(s){}
 
-void Document::add_state(State& s)
+void Document::add_state(State s)
 {
 	states.push_back(s);
 }
-void Document::add_transition(Transition& t)
+void Document::add_transition(Transition t)
 {
 	transitions.push_back(t);
 }

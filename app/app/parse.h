@@ -23,11 +23,13 @@ private:
 		Set all transitions with appropriate states
 	*/
 	void fill_transitions();
-
+	
+	void fill_actions();
 	/*
 		Calls fill_states and fill_transitions
 	*/
 	void connect();
+
 
 public:
 	Document document;
