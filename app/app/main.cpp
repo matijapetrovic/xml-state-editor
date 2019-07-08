@@ -15,7 +15,8 @@ int main(int argc, char *argv[])
 	FileDialog* fd = new FileDialog;
 
 	Document* document;
-
+	Parser p;
+	p.read_and_connect("Lifecycle.xml");
 	if (fd->exec()) {
 		document = fd->result();
 

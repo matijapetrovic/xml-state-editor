@@ -3,7 +3,7 @@
 
 #include <string>
 #include <list>
-
+#include <set>
 #include "Field.h"
 #include "State.h"
 #include "Transition.h"
@@ -27,13 +27,13 @@ public:
 	
 	void set_states(std::list<State>& stat);
 	void set_transitions(std::list<Transition>& tran);
-	void set_fields(std::list<Field>& fil);
+	void set_fields(std::set<Field>& fil);
 	void set_actions(std::list<Action>& ac);
 	
 	std::list<Action>& get_actions();
 	std::list<Transition>& get_transitions();
 	std::list<State>& get_states();
-	std::list<Field>& get_fields();
+	std::set<Field>& get_fields();
 	std::string get_name() { return name; };
 	State* get_current_state() { return current_state; };
 
@@ -44,7 +44,7 @@ private:
 	
 	std::list<State> states;
 	std::list<Transition> transitions;
-	std::list<Field> fields;
+	std::set<Field> fields;
 	std::list<Action> actions;
 };
 

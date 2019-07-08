@@ -1,6 +1,6 @@
 #include "FieldView.h"
 
-FieldView::FieldView(Field & _model) : 
+FieldView::FieldView(const Field & _model) : 
 	QLineEdit(),
 	model(_model)
 {
