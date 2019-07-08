@@ -2,12 +2,12 @@
 #define  _STATE_H_
 
 #include <list>
-
+#include <vector>
 #include "Action.h"
 #include "Transition.h"
 #include "Field.h"
 
-
+using namespace std;
 class Transition;
 
 
@@ -16,7 +16,8 @@ public:
 	enum StateSemantic{INIT=0, SAVE_ENABLED, DELETE_ENABLED, FINAL};
 	
 	State() {}
-	State(int id, std::string _display_name, Document* _document);
+	State(int id) : entity_id(id) {}
+	State(int id, std::string _display_name);
 	State(const State& s);
 	
 	// Add to collection
@@ -34,13 +35,12 @@ public:
 	EntityName get_entity_name() { return entity_name; };
 	std::string get_lifecycle_name() { return lifecycle_name; };
 
-	std::list<StateSemantic>& get_state_semantic() { return state_semantic; };
-	std::list<Action>& get_actions() { return actions; };
-	std::list<Transition>& get_transitions() { return transitions; };
-	std::list<Field>& get_mandatory_fields() { return mandatory_fields; };
-	std::list<Field>& get_hide_fields() { return hide_fields; };
-	std::list<Field>& get_deny_fields() { return deny_modyfing_filds; };
-	std::list<int>& get_transitions_ids() { return transitions_ids; };
+	vector<StateSemantic>& get_state_semantic() { return state_semantic; };
+	vector<Action>& get_actions() { return actions; };
+	vector<Transition>& get_transitions() { return transitions; };
+	vector<Field>& get_mandatory_fields() { return mandatory_fields; };
+	vector<Field>& get_hide_fields() { return hide_fields; };
+	vector<Field>& get_deny_fields() { return deny_modyfing_filds; };
 
 	// Setters
 	void set_entity_id(int _entity_id) { entity_id = _entity_id; };
@@ -48,12 +48,12 @@ public:
 	void set_lifecycle_name(std::string _lifecycle_name) { lifecycle_name = _lifecycle_name; };
 	void set_entity_name(EntityName _entity_name) { entity_name = _entity_name; }
 
-	void set_state_semantic(std::list<StateSemantic>& ss);
-	void set_actions(std::list<Action>& act);
-	void set_transitions(std::list<Transition>& tr);
-	void set_mandatory_fields(std::list<Field>& f);
-	void set_hide_fields(std::list<Field>& hide);
-	void set_deny_fields(std::list<Field>& deny);
+	void set_state_semantic(vector<StateSemantic>& ss);
+	void set_actions(vector<Action>& act);
+	void set_transitions(vector<Transition>& tr);
+	void set_mandatory_fields(vector<Field>& f);
+	void set_hide_fields(vector<Field>& hide);
+	void set_deny_fields(vector<Field>& deny);
 
 
 private:
@@ -61,14 +61,13 @@ private:
 	std::string display_name;
 	std::string lifecycle_name;
 	EntityName entity_name;
-	
-	std::list<int> transitions_ids;
-	std::list<StateSemantic> state_semantic;
-	std::list<Action> actions;
-	std::list<Transition> transitions;
-	std::list<Field> mandatory_fields;
-	std::list<Field> hide_fields;
-	std::list<Field> deny_modyfing_filds;
+
+	vector<StateSemantic> state_semantic;
+	vector<Action> actions;
+	vector<Transition> transitions;
+	vector<Field> mandatory_fields;
+	vector<Field> hide_fields;
+	vector<Field> deny_modyfing_filds;
 };
 
 

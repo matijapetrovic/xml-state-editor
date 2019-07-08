@@ -11,6 +11,11 @@ public:
 	InvalidFileException() :std::runtime_error("Invalid file ! ") {}
 };
 
+class MissingInitStateException :public std::runtime_error {
+public:
+	MissingInitStateException() :std::runtime_error("File has no initial state ! ") {}
+};
+
 class Parser {
 
 private:
@@ -32,7 +37,11 @@ private:
 
 
 public:
-	Document document;
+	Document* document;
+
+	Parser() {
+		document = new Document;
+	}
 
 	int strToInt(const char*);
 	bool valid_file(string filename);

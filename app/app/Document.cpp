@@ -5,13 +5,11 @@ using namespace std;
 
 
 Document::Document(string name) :
-	name(name), 
-	valid(false)
+	name(name)
 {}
 
 Document::Document(string name, State* s) :
 	name(name),
-	valid(false),
 	current_state(s){}
 
 void Document::add_state(State s)

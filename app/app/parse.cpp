@@ -90,11 +90,15 @@ void Parser::readTransitions(string filename) {
 					attr2 = elem3->Attribute("entityId");
 					if (attr2 != NULL) {
 						//ovde postavljam onsucceed i onfailed int
+						State* s = new State(strToInt(attr2));
 						if (strcmp(attr, "TRANSITION_ON_SUCCEED")== 0) {
-							transition.set_on_succeed_num(strToInt(attr2));
+							
+							//transition.set_on_succeed_num(strToInt(attr2));
+							transition.set_on_succeed(s);
 						}
 						else if (strcmp(attr, "TRANSITION_ON_FAIL")== 0) {
-							transition.set_on_failed_num(strToInt(attr2));
+							//transition.set_on_failed_num(strToInt(attr2));
+							transition.set_on_fail(s);
 						}
 					}
 					// prolazim kroz sve ispise ukliko value ima samo tekst atribut
@@ -139,7 +143,7 @@ void Parser::readTransitions(string filename) {
 			}
 		}
 	
-		document.add_transition(transition);
+		document->add_transition(transition);
 	}
 	
 }
@@ -149,7 +153,7 @@ void Parser::readStates(string filename)
 	if (!valid_file(filename)) {
 		throw InvalidFileException();
 	}
-
+	bool valid = false;
 	TiXmlDocument doc(filename.c_str());
 	doc.LoadFile();
 	TiXmlElement* root = doc.FirstChildElement();
@@ -171,7 +175,7 @@ void Parser::readStates(string filename)
 				os << id << endl;
 				state.set_entity_id(id);
 			}
-			
+
 		}
 		//iteriramo kroz propertije
 		for (TiXmlElement* elem2 = elem->FirstChildElement(); elem2 != NULL; elem2 = elem2->NextSiblingElement()) {
@@ -182,10 +186,10 @@ void Parser::readStates(string filename)
 				os << " " << attr;
 
 			}
-			
+
 			//iteriramo kroz values/enum values
 			for (TiXmlElement* elem3 = elem2->FirstChildElement(); elem3 != NULL; elem3 = elem3->NextSiblingElement()) {
-				
+
 				string elemName = elem3->Value();
 				const char* attr2;
 				if (elemName == "Value")
@@ -194,11 +198,12 @@ void Parser::readStates(string filename)
 					if (attr2 != NULL) {
 						os << " " << attr2;
 						int id = strToInt(attr2);
-						state.add_transition_id(id);
-
+						Transition t(id);
+						//state.add_transition_id(id);
+						state.add_transition(t);
 					}
 				}
-				
+
 				for (TiXmlNode* e = elem3->FirstChild(); e != NULL; e = e->NextSibling()) {
 					TiXmlText* text = e->ToText();
 					if (text == NULL) {
@@ -215,18 +220,20 @@ void Parser::readStates(string filename)
 
 						Field field;
 						field.set_name(t);
-
 						state.add_deny_field(field);
+						document->add_field(field);
 					}
 					else if (strcmp(attr, "STATE_HIDE_FIELDS") == 0) {
 						Field field;
 						field.set_name(t);
 						state.add_hide_field(field);
+						document->add_field(field);
 					}
 					else if (strcmp(attr, "STATE_MANDATORY_FIELDS") == 0) {
 						Field field;
 						field.set_name(t);
 						state.add_mandatory_field(field);
+						document->add_field(field);
 					}
 					else if (strcmp(attr, "ENTITY_NAME") == 0) {
 						if (strcmp(t1, "AccessPermit") == 0) {
@@ -245,7 +252,7 @@ void Parser::readStates(string filename)
 					}
 					else if (strcmp(attr, "STATE_SEMANTIC") == 0) {
 						if (strcmp(t1, "Init") == 0) {
-							document.set_valid(true);
+							valid = true;
 							state.add_state_semantic(State::StateSemantic::INIT);
 						}
 						else if (strcmp(t1, "SaveEnabled") == 0) {
@@ -259,49 +266,55 @@ void Parser::readStates(string filename)
 						}
 					}
 
-					
 				}
-				
+
 			}
 
 			os << endl;
 
 		}
-		document.add_state(state);
+		document->add_state(state);
 	}
 	os.close();
+	if (!valid) {
+		throw MissingInitStateException();
+	}
 }
 
 
 void Parser::fill_states() {
 
-
-	for (State& state : document.get_states())
+	for (State& state : document->get_states())
 	{
-		for (int i : state.get_transitions_ids()){
-			for (auto& t : document.get_transitions()) {
-				if (i == t.get_entity_id()) {
-					state.add_transition(t);
+		vector<Transition> tr = state.get_transitions();
+		for (int i = 0; i != tr.size(); i++) {
+			for (auto& t : document->get_transitions()) {
+				if (tr[i].get_entity_id() == t.get_entity_id()) {
+
+					state.get_transitions()[i] = t;
+
 					break;
-				}	
+				}
 			}
 		}
 	}
-	
+
 
 }
 
 void Parser::fill_transitions() {
 
-	for (Transition& trans : document.get_transitions())
+	for (Transition& trans : document->get_transitions())
 	{
-		for (State& state : document.get_states())
+		for (State& state : document->get_states())
 		{
-			if ((state).get_entity_id() == trans.get_on_succeed_num()) {
+			if ((state).get_entity_id() == trans.get_on_succeed()->get_entity_id()) {
+				delete trans.get_on_succeed();
 				trans.set_on_succeed(&state);
 
 			}
-			else if ((state).get_entity_id() == trans.get_on_failed_num()) {
+			else if ((state).get_entity_id() == trans.get_on_fail()->get_entity_id()) {
+				delete trans.get_on_fail();
 				trans.set_on_fail(&state);
 			}
 
@@ -312,11 +325,11 @@ void Parser::fill_transitions() {
 
 void Parser::fill_actions()
 {
-	for (State& state : document.get_states()) {
+	for (State& state : document->get_states()) {
 		for (Transition& transition : state.get_transitions()) {
 			string name = (*transition.get_on_succeed()).get_lifecycle_name();
 			Action action(name);
-			document.add_action(action);
+			document->add_action(action);
 			state.add_action(action);
 		}
 	}
@@ -336,10 +349,7 @@ Document* Parser::read_and_connect(string filename) {
 
 	readTransitions(filename);
 	readStates(filename);
-	if (!document.is_valid()) {
-		throw InvalidFileException();
-	}
 	connect();
-	return &document;
+	return document;
 }
 

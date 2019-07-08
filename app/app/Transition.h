@@ -12,6 +12,7 @@ class Document;
 class Transition {
 public:
 	Transition() {}
+	Transition(int id): entity_id(id) {}
 	Transition(int id, std::string name, EntityName entity);
 	Transition(int id, std::string name, EntityName entity, State* succeed, State* fail);
 	Transition(const Transition& t);
@@ -23,8 +24,7 @@ public:
 	EntityName get_entity_name();
 	State* get_on_fail();
 	State* get_on_succeed();
-	int get_on_succeed_num();
-	int get_on_failed_num();
+
 
 
 	// Setters
@@ -33,8 +33,7 @@ public:
 	void set_entity_name(EntityName entity);
 	void set_on_succeed(State* succeed);
 	void set_on_fail(State* fail);
-	void set_on_succeed_num(int num);
-	void set_on_failed_num(int num);
+
 
 private:
 	int entity_id;
@@ -43,9 +42,6 @@ private:
 
 	State* on_succeed;
 	State* on_fail;
-
-	int on_succeed_num;
-	int on_failed_num;
 };
 
 #endif //_TRANSITION_H_
