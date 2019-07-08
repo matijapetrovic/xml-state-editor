@@ -26,24 +26,20 @@ State::State(const State & s)
 
 Action* State::find_action(std::string name)
 {
-	for (auto iterator = actions.begin(); iterator != actions.end(); iterator++)
+	for (Action& ac : actions)
 	{
-		if (iterator->get_label().compare(name) == 0) {
-			Action* act = (Action*)&iterator;
-			return act;
-		}
-			
+		if (ac.get_label() == name)
+			return &ac;
 	}
 	return nullptr;
 }
 
 Transition* State::find_transition(int entity) {
 
-	for (auto iterator = transitions.begin(); iterator != transitions.end(); iterator++)
+	for (Transition& t : transitions)
 	{
-		if ((*iterator).get_entity_id() == entity) {
-			Transition* tran = (Transition*)&iterator;
-			return tran;
+		if (t.get_entity_id() == entity) {
+			return &t;
 		}
 	}
 	return nullptr;
