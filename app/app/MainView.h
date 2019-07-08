@@ -4,17 +4,16 @@
 #include "MainWindow.h"
 #include "FileDialog.h"
 
-class MainView {
+class MainView : public MainWindow {
 
 public:
-	MainView();
+	MainView(Document* document);
 	~MainView();
 
 	void show();
 private:
-	MainWindow* main_window;
-	FileDialog* file_dialog;
-
+	Document* document;
+	
 };
 
 #endif // !_MAIN_VIEW_H

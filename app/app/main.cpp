@@ -1,21 +1,28 @@
-#include <QtWidgets/QApplication>
-#include<QDebug>
+#include <QDebug>
 #include <QTextStream>
+#include <QApplication>
+
 #include "parse.h"
-#include "App.h"
 #include "MainView.h"
 
-#include <fstream>
-#include <iostream>
 using namespace std;
 
 int main(int argc, char *argv[])
 {
 	
-	App a(argc, argv);
+	QApplication a(argc, argv);
 
-	MainView main_view;
-	main_view.show();
+	FileDialog* fd = new FileDialog;
+
+	Document* document;
+
+	if (fd->exec()) {
+		document = fd->result();
+
+		MainView main_view(document);
+		main_view.show();
+	}
+
 
 	return a.exec();
 }
