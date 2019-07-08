@@ -324,8 +324,9 @@ void Parser::fill_actions()
 
 void Parser::connect() {
 	
-	fill_states();
+	
 	fill_transitions();
+	fill_states();
 	fill_actions();
 	
 	
