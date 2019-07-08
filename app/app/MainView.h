@@ -9,8 +9,6 @@ class MainView : public MainWindow {
 public:
 	MainView(Document* document);
 	~MainView();
-
-	void show();
 private:
 	Document* document;
 	

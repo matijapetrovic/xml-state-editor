@@ -1,4 +1,7 @@
+#include <QMessageBox>
+
 #include "FileDialog.h"
+#include "parse.h"
 
 FileDialog::FileDialog() :
 	QDialog(),
@@ -57,10 +60,29 @@ void FileDialog::init_geometry() {
 }
 
 void FileDialog::accept_action() {
-	// ovde treba proveriti validnost xml-a
-	// napraviti error box u slucaju da je lose
-	// inace ucitati dokument i accept
-	accept();
+	if (input->text().isEmpty()) {
+		auto reply = QMessageBox::critical(this, tr("No file chosen."), "Please choose a file.", QMessageBox::Abort | QMessageBox::Retry);
+		if (reply == QMessageBox::Abort)
+			reject();
+	}
+	else {
+		Parser p;
+		try {
+			opened_document = p.read_and_connect(input->text().toStdString());
+			accept();
+		}
+		catch (InvalidFileException e) {
+			auto reply = QMessageBox::critical(this, tr("Invalid XML file."), "Please choose a valid XML file.", QMessageBox::Abort | QMessageBox::Retry);
+			if (reply == QMessageBox::Abort)
+				reject();
+		}
+		
+		//catch (MissingInitStateException e) {
+		//	auto reply = QMessageBox::critical(this, tr("Missing init state."), "Please choose a valid XML file.", QMessageBox::Abort | QMessageBox::Retry);
+		//	if (reply == QMessageBox::Abort)
+		//		reject();
+		//}
+	}
 }
 
 Document* FileDialog::result() {
