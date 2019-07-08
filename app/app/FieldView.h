@@ -8,11 +8,11 @@
 
 class FieldView : public QLineEdit {
 public:
-	FieldView(Field& _model);
+	FieldView(const Field& _model);
 	~FieldView();
 
 private:
-	Field& model;
+	const Field& model;
 
 };
 

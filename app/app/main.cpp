@@ -1,19 +1,28 @@
-#include <QtWidgets/QApplication>
-#include<QDebug>
+#include <QDebug>
 #include <QTextStream>
-#include "parse.h"
-#include "App.h"
+#include <QApplication>
 
-#include <fstream>
-#include <iostream>
+#include "parse.h"
+#include "MainView.h"
+
 using namespace std;
 
 int main(int argc, char *argv[])
 {
 	
-	App a(argc, argv);
-	a.show_document_dialog();
-	Parser p;
-	Document* doc = p.read_and_connect("Lifecycle.xml");
+	QApplication a(argc, argv);
+
+	FileDialog* fd = new FileDialog;
+	Document* document;
+
+	if (!fd->exec()) {
+		return 0;
+	}
+
+	document = fd->result();
+
+	MainView main_view(document);
+	main_view.show();
+
 	return a.exec();
 }

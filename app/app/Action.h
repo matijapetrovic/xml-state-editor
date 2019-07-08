@@ -11,6 +11,7 @@ public:
 
 	std::string get_label() { return label; }
 private:
+	std::string name;
 	std::string label;
 	
 };

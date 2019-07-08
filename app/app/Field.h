@@ -14,9 +14,11 @@ public:
 	void set_text(std::string _text) { text = _text; }
 	void set_type(FieldType _type) { type = _type; }
 	
-	std::string get_name() { return name; }
-	std::string get_text() { return text; }
-	FieldType get_type() { return type; }
+	std::string get_name() const { return name; }
+	std::string get_text() const { return text; }
+	FieldType get_type() const { return type; }
+
+	friend bool operator < (const Field& a, const Field& b);
 
 private:
 	std::string name;

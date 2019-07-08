@@ -6,6 +6,6 @@ Action::Action()
 {
 }
 
-Action::Action(string _label) : label(_label) {
+Action::Action(string _label) : label(_label), name(_label) {
 
 }

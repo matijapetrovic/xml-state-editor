@@ -29,8 +29,6 @@ Transition::Transition(const Transition & t)
 	on_succeed = t.on_succeed;
 	on_fail = t.on_fail;
 
-	on_succeed_num = t.on_succeed_num;
-	on_failed_num = t.on_failed_num;
 }
 
 int Transition::get_entity_id()
@@ -74,20 +72,4 @@ State* Transition::get_on_succeed()
 	return on_succeed;
 }
 
-void Transition::set_on_succeed_num(int num)
-{
-	on_succeed_num = num;
-}
-void Transition::set_on_failed_num(int num)
-{
-	on_failed_num = num;
-}
-int Transition::get_on_succeed_num()
-{
-	return on_succeed_num;
-}
-int Transition::get_on_failed_num()
-{
-	return on_failed_num;
-}
 
