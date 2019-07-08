@@ -11,6 +11,8 @@ public:
 	FieldView(const Field& _model);
 	~FieldView();
 
+	const Field& get_model() const { return model; }
+
 private:
 	const Field& model;
 

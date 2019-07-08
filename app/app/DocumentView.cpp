@@ -1,6 +1,8 @@
 #include "DocumentView.h"
 #include "ActionView.h"
 
+using namespace std;
+
 DocumentView::DocumentView(Document & _model) :
 	model(_model),
 	layout(new QGridLayout())
@@ -17,7 +19,8 @@ DocumentView::DocumentView(Document & _model) :
 	update_view();
 }
 
-DocumentView::~DocumentView() {
+DocumentView::~DocumentView()
+{
 	delete_info_panel();
 	delete_transition_panel();
 	delete_fields_panel();
@@ -29,7 +32,8 @@ void DocumentView::update_view()
 	update_fields();
 }
 
-void DocumentView::init_info_panel() {
+void DocumentView::init_info_panel() 
+{
 	info_panel = new QWidget();
 	info_panel_layout = new QVBoxLayout();
 
@@ -41,10 +45,13 @@ void DocumentView::init_info_panel() {
 	name_label->setStyleSheet("font-weight:bold;");
 	info_panel_layout->addWidget(name_label);
 
+	info_panel_layout->addStretch();
+
 	info_panel->setLayout(info_panel_layout);
 }
 
-void DocumentView::init_transition_panel() {
+void DocumentView::init_transition_panel() 
+{
 	transition_panel = new QWidget();
 	transition_panel_layout = new QHBoxLayout();
 
@@ -52,6 +59,7 @@ void DocumentView::init_transition_panel() {
 		transition_buttons.push_back(new ActionView(action));
 		// povezi akcije sa tranzicijama
 		transition_panel_layout->addWidget(transition_buttons.back());
+		connect(transition_buttons.back(), SIGNAL(released()), this, SLOT(handle_button_pushed ()));
 	}
 
 	transition_panel_layout->addStretch();
@@ -59,7 +67,8 @@ void DocumentView::init_transition_panel() {
 	transition_panel->setLayout(transition_panel_layout);
 }
 
-void DocumentView::init_fields_panel() {
+void DocumentView::init_fields_panel() 
+{
 	fields_panel = new QWidget();
 	fields_panel_layout = new QFormLayout();
 
@@ -88,9 +97,8 @@ void DocumentView::reset_fields()
 		fields_panel_layout->takeRow(i);
 }
 
-void DocumentView::update_fields() {
-
-	
+void DocumentView::update_fields() 
+{
 	list<QLabel*>::const_iterator it_lab = field_labels.begin();
 	for (FieldView* fv : fields) {
 
@@ -108,19 +116,49 @@ void DocumentView::update_fields() {
 	}
 }
 
+void DocumentView::handle_button_pushed() 
+{
+	State* prev_state = new State(*model.get_current_state());
 
-void DocumentView::delete_info_panel() {
+	for (Field& f : prev_state->get_mandatory_fields()) {
+		for (FieldView* fv : fields) {
+			if (fv->get_model().get_name() == f.get_name())
+				f.set_text(fv->text().toStdString());
+		}
+	}
+
+	for (Field& f : prev_state->get_deny_fields()) {
+		for (FieldView* fv : fields) {
+			if (fv->get_model().get_name() == f.get_name())
+				f.set_text(fv->text().toStdString());
+		}
+	}
+
+	for (Field& f : prev_state->get_hide_fields()) {
+		for (FieldView* fv : fields) {
+			if (fv->get_model().get_name() == f.get_name())
+				f.set_text(fv->text().toStdString());
+		}
+	}
+
+	emit action_button_pushed(prev_state);
+}
+
+void DocumentView::delete_info_panel() 
+{
 	delete info_panel;
 	delete id_label;
 	delete name_label;
 	delete doc_type_label;
 }
 
-void DocumentView::delete_transition_panel() {
+void DocumentView::delete_transition_panel()
+{
 
 }
 
-void DocumentView::delete_fields_panel() {
+void DocumentView::delete_fields_panel() 
+{
 	for (QLabel* label : field_labels)
 		delete label;
 	for (FieldView* field : fields)

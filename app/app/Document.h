@@ -10,6 +10,7 @@
 
 class State;
 class Transition;
+class Action;
 
 class Document {
 public:

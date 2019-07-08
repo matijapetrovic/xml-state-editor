@@ -334,7 +334,7 @@ void Parser::fill_actions()
 	for (State& state : document->get_states()) {
 		for (Transition& transition : state.get_transitions()) {
 			string name = (*transition.get_on_succeed()).get_lifecycle_name();
-			Action action(name);
+			Action action(name, &transition);
 			document->add_action(action);
 			state.add_action(action);
 		}

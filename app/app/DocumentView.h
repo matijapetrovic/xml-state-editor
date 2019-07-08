@@ -18,6 +18,12 @@ public:
 	~DocumentView();
 
 	void update_view();
+
+Q_SIGNALS:
+	void action_button_pushed(Transition* transition, State* prev_state);
+private Q_SLOTS:
+	void handle_button_pushed();
+
 private:
 	Document& model;
 
@@ -56,6 +62,7 @@ private:
 
 	void reset_fields();
 	void update_fields();
+
 };
 
 

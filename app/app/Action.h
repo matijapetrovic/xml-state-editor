@@ -4,15 +4,21 @@
 
 #include <string>
 
+#include "Transition.h"
+
+class Transition;
+
 class Action {
 public:
 	Action();
-	Action(std::string _label);
+	Action(std::string _label, Transition* trans);
 
 	std::string get_label() { return label; }
 private:
 	std::string name;
 	std::string label;
+
+	Transition* transition;
 	
 };
 

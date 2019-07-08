@@ -7,8 +7,9 @@
 #include "Transition.h"
 #include "Field.h"
 
-using namespace std;
+
 class Transition;
+class Action;
 
 
 class State {
@@ -41,12 +42,12 @@ public:
 
 	std::string get_entity_string();
 
-	vector<StateSemantic>& get_state_semantic() { return state_semantic; };
-	vector<Action>& get_actions() { return actions; };
-	vector<Transition>& get_transitions() { return transitions; };
-	vector<Field>& get_mandatory_fields() { return mandatory_fields; };
-	vector<Field>& get_hide_fields() { return hide_fields; };
-	vector<Field>& get_deny_fields() { return deny_modyfing_filds; };
+	std::vector<StateSemantic>& get_state_semantic() { return state_semantic; };
+	std::vector<Action>& get_actions() { return actions; };
+	std::vector<Transition>& get_transitions() { return transitions; };
+	std::vector<Field>& get_mandatory_fields() { return mandatory_fields; };
+	std::vector<Field>& get_hide_fields() { return hide_fields; };
+	std::vector<Field>& get_deny_fields() { return deny_modyfing_filds; };
 
 	// Setters
 	void set_entity_id(int _entity_id) { entity_id = _entity_id; };
@@ -54,12 +55,12 @@ public:
 	void set_lifecycle_name(std::string _lifecycle_name) { lifecycle_name = _lifecycle_name; };
 	void set_entity_name(EntityName _entity_name) { entity_name = _entity_name; }
 
-	void set_state_semantic(vector<StateSemantic>& ss);
-	void set_actions(vector<Action>& act);
-	void set_transitions(vector<Transition>& tr);
-	void set_mandatory_fields(vector<Field>& f);
-	void set_hide_fields(vector<Field>& hide);
-	void set_deny_fields(vector<Field>& deny);
+	void set_state_semantic(std::vector<StateSemantic>& ss);
+	void set_actions(std::vector<Action>& act);
+	void set_transitions(std::vector<Transition>& tr);
+	void set_mandatory_fields(std::vector<Field>& f);
+	void set_hide_fields(std::vector<Field>& hide);
+	void set_deny_fields(std::vector<Field>& deny);
 
 
 	Field* find_mandatory_field(std::string name);
@@ -72,12 +73,12 @@ private:
 	std::string lifecycle_name;
 	EntityName entity_name;
 
-	vector<StateSemantic> state_semantic;
-	vector<Action> actions;
-	vector<Transition> transitions;
-	vector<Field> mandatory_fields;
-	vector<Field> hide_fields;
-	vector<Field> deny_modyfing_filds;
+	std::vector<StateSemantic> state_semantic;
+	std::vector<Action> actions;
+	std::vector<Transition> transitions;
+	std::vector<Field> mandatory_fields;
+	std::vector<Field> hide_fields;
+	std::vector<Field> deny_modyfing_filds;
 };
 
 
