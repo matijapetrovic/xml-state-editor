@@ -28,6 +28,11 @@ void Document::add_action(Action& a)
 {
 	actions.push_back(a);
 }
+void Document::set_current_state(State * _state)
+{
+	current_state = _state;
+	emit model_updated();
+}
 void Document::set_states(std::list<State>& stat)
 {
 	states = stat;

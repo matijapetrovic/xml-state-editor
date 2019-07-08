@@ -10,6 +10,8 @@ class ActionView : public QPushButton {
 
 public: 
 	ActionView(Action& _model);
+
+	Action* get_model() { return &model; }
 private:
 
 	Action& model;

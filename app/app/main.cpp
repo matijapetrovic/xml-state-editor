@@ -4,6 +4,7 @@
 
 #include "parse.h"
 #include "MainView.h"
+#include "MainController.h"
 
 using namespace std;
 
@@ -21,7 +22,9 @@ int main(int argc, char *argv[])
 
 	document = fd->result();
 
-	MainView main_view(document);
+	MainController* controller = new MainController(*document);
+
+	MainView main_view(document, controller);
 	main_view.show();
 
 	return a.exec();

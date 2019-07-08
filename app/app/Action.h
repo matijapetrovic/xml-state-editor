@@ -14,6 +14,7 @@ public:
 	Action(std::string _label, Transition* trans);
 
 	std::string get_label() { return label; }
+	Transition* get_transition() { return transition; }
 private:
 	std::string name;
 	std::string label;

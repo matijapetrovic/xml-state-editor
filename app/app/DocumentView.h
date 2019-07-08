@@ -9,23 +9,26 @@
 
 #include "Document.h"
 #include "FieldView.h"
+#include "MainController.h"
 
 class DocumentView : public QWidget {
 	Q_OBJECT
 
 public:
-	DocumentView(Document& _model);
+	DocumentView(Document& _model, MainController& _controller);
 	~DocumentView();
 
 	void update_view();
 
 Q_SIGNALS:
 	void action_button_pushed(Transition* transition, State* prev_state);
+
 private Q_SLOTS:
 	void handle_button_pushed();
 
 private:
 	Document& model;
+	MainController& controller;
 
 	QGridLayout* layout;
 

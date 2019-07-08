@@ -3,10 +3,13 @@
 
 using namespace std;
 
-DocumentView::DocumentView(Document & _model) :
+DocumentView::DocumentView(Document & _model, MainController& _controller) :
 	model(_model),
+	controller(_controller),
 	layout(new QGridLayout())
 {
+	connect(this, &DocumentView::action_button_pushed, &controller, &MainController::do_transition);
+
 	init_info_panel();
 	init_transition_panel();
 	init_fields_panel();
@@ -141,7 +144,9 @@ void DocumentView::handle_button_pushed()
 		}
 	}
 
-	emit action_button_pushed(prev_state);
+	ActionView* aw = (ActionView*) sender();
+
+	emit action_button_pushed(aw->get_model()->get_transition(), prev_state);
 }
 
 void DocumentView::delete_info_panel() 
