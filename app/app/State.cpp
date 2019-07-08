@@ -2,11 +2,9 @@
 
 using namespace std;
 
-
-State::State(int _entity_id, string _display_name, Document* _document) :
+State::State(int _entity_id, string _display_name) :
 	entity_id(_entity_id),
-	display_name(_display_name),
-	document(_document)   
+	display_name(_display_name)
 {
 }
 
@@ -14,11 +12,9 @@ State::State(const State & s)
 {
 	entity_id = s.entity_id;
 	display_name = s.display_name;
-	document = s.document;
 	lifecycle_name = s.lifecycle_name;
 	entity_name = s.entity_name;
 
-	transitions_ids = s.transitions_ids;
 	state_semantic = s.state_semantic;
 	actions = s.actions;
 	transitions = s.transitions;
@@ -55,27 +51,27 @@ Transition* State::find_transition(int entity) {
 	return nullptr;
 }
 
-void State::set_state_semantic(list<StateSemantic>& ss)
+void State::set_state_semantic(vector<StateSemantic>& ss)
 {
 	state_semantic = ss;
 }
-void State::set_actions(list<Action>& act)
+void State::set_actions(vector<Action>& act)
 {
 	actions = act;
 }
-void State::set_transitions(list<Transition>& tr)
+void State::set_transitions(vector<Transition>& tr)
 {
 	transitions = tr;
 }
-void State::set_mandatory_fields(list<Field>& mandatory)
+void State::set_mandatory_fields(vector<Field>& mandatory)
 {
 	mandatory_fields = mandatory;
 }
-void State::set_hide_fields(list<Field>& hide)
+void State::set_hide_fields(vector<Field>& hide)
 {
 	hide_fields = hide;
 }
-void State::set_deny_fields(list<Field>& deny)
+void State::set_deny_fields(vector<Field>& deny)
 {
 	deny_modyfing_filds = deny;
 }
@@ -99,11 +95,6 @@ void State::add_hide_field(Field& hide)
 void State::add_deny_field(Field& deny)
 {
 	deny_modyfing_filds.push_back(deny);
-}
-
-void State::add_transition_id(int i)
-{
-	transitions_ids.push_back(i);
 }
 
 void State::add_state_semantic(StateSemantic s)

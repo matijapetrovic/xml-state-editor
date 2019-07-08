@@ -299,13 +299,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
-    <ClCompile Include="App.cpp" />
     <ClCompile Include="Document.cpp" />
     <ClCompile Include="DocumentView.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldView.cpp" />
     <ClCompile Include="FileDialog.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainView.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="parse.cpp" />
     <ClCompile Include="State.cpp" />
@@ -314,9 +314,6 @@
     <ClCompile Include="tinyxmlerror.cpp" />
     <ClCompile Include="tinyxmlparser.cpp" />
     <ClCompile Include="Transition.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="App.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="App.qrc" />
@@ -339,6 +336,7 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
+    <ClInclude Include="MainView.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="parse.h" />
     <ClInclude Include="State.h" />
