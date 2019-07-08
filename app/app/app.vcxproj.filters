@@ -108,6 +108,9 @@
     <ClCompile Include="MainView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="ActionView.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="App.qrc">
@@ -142,11 +145,11 @@
     <ClInclude Include="FieldView.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
-    <ClInclude Include="enum.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
     <ClInclude Include="MainView.h">
       <Filter>Header Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +161,9 @@
     </QtMoc>
     <QtMoc Include="MainWindow.h">
       <Filter>Header Files\gui</Filter>
+    </QtMoc>
+    <QtMoc Include="ActionView.h">
+      <Filter>Header Files\view</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

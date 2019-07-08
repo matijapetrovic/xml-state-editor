@@ -16,6 +16,8 @@ class DocumentView : public QWidget {
 public:
 	DocumentView(Document& _model);
 	~DocumentView();
+
+	void update_view();
 private:
 	Document& model;
 
@@ -52,6 +54,8 @@ private:
 	void delete_transition_panel();
 	void delete_fields_panel();
 
+	void reset_fields();
+	void update_fields();
 };
 
 

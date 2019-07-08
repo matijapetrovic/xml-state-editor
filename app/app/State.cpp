@@ -50,6 +50,33 @@ void State::set_deny_fields(vector<Field>& deny)
 	deny_modyfing_filds = deny;
 }
 
+Field * State::find_mandatory_field(std::string name)
+{
+	for (Field& f : mandatory_fields) {
+		if (f.get_name() == name)
+			return &f;
+	}
+	return nullptr;
+}
+
+Field * State::find_hide_field(std::string name)
+{
+	for (Field& f : hide_fields) {
+		if (f.get_name() == name)
+			return &f;
+	}
+	return nullptr;
+}
+
+Field * State::find_deny_field(std::string name)
+{
+	for (Field& f : deny_modyfing_filds) {
+		if (f.get_name() == name)
+			return &f;
+	}
+	return nullptr;
+}
+
 void State::add_action(Action& a)
 {
 	actions.push_back(a);
@@ -74,4 +101,18 @@ void State::add_deny_field(Field& deny)
 void State::add_state_semantic(StateSemantic s)
 {
 	state_semantic.push_back(s);
+}
+
+std::string State::get_entity_string()
+{
+	switch (entity_name) {
+	case ACCESS_PERMIT:
+		return "Access Permit";
+	case SWITCH_ORDER:
+		return "Switch Order";
+	case SWITCH_REQUEST:
+		return "Switch Request";
+	default:
+		return "";
+	}
 }

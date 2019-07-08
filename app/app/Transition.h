@@ -1,7 +1,7 @@
 #ifndef _TRANSITION_H_
 #define _TRANSITION_H_
 
-#include "enum.h"
+#include "globals.h"
 #include "Document.h"
 #include "State.h"
 

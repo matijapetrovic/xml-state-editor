@@ -34,6 +34,8 @@ public:
 	EntityName get_entity_name() { return entity_name; };
 	std::string get_lifecycle_name() { return lifecycle_name; };
 
+	std::string get_entity_string();
+
 	vector<StateSemantic>& get_state_semantic() { return state_semantic; };
 	vector<Action>& get_actions() { return actions; };
 	vector<Transition>& get_transitions() { return transitions; };
@@ -54,6 +56,10 @@ public:
 	void set_hide_fields(vector<Field>& hide);
 	void set_deny_fields(vector<Field>& deny);
 
+
+	Field* find_mandatory_field(std::string name);
+	Field* find_hide_field(std::string name);
+	Field* find_deny_field(std::string name);
 
 private:
 	int entity_id;

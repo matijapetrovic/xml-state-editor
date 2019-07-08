@@ -378,7 +378,6 @@
         <EnumValue>AccessPermit</EnumValue>
       </Property>
       <Property model="STATE_SEMANTIC">
-        <EnumValue>Init</EnumValue>
         <EnumValue>SaveEnabled</EnumValue>
         <EnumValue>DeleteEnabled</EnumValue>
       </Property>
@@ -411,6 +410,7 @@
         <EnumValue>AccessPermit</EnumValue>
       </Property>
       <Property model="STATE_SEMANTIC">
+        <EnumValue>Init</EnumValue>
         <EnumValue>SaveEnabled</EnumValue>
         <EnumValue>Submited</EnumValue>
         <EnumValue>Simulate</EnumValue>
@@ -590,7 +590,6 @@
         <EnumValue>SwitchOrder</EnumValue>
       </Property>
       <Property model="STATE_SEMANTIC">
-        <EnumValue>Init</EnumValue>
         <EnumValue>SaveEnabled</EnumValue>
         <EnumValue>DeleteEnabled</EnumValue>
       </Property>
@@ -811,7 +810,6 @@
         <EnumValue>SwitchRequest</EnumValue>
       </Property>
       <Property model="STATE_SEMANTIC">
-        <EnumValue>Init</EnumValue>
         <EnumValue>SaveEnabled</EnumValue>
         <EnumValue>DeleteEnabled</EnumValue>
       </Property>

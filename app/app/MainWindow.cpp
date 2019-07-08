@@ -12,5 +12,5 @@ void MainWindow::init_geometry() {
 	auto w = dimensions.width();
 	auto h = dimensions.height();
 	
-	setGeometry(w/4, h/4, w/2, h/2);
+	setGeometry(2.5*w/8, h/4, 3*w/8, h/2);
 }

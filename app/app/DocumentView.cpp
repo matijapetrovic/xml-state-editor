@@ -1,4 +1,5 @@
 #include "DocumentView.h"
+#include "ActionView.h"
 
 DocumentView::DocumentView(Document & _model) :
 	model(_model),
@@ -8,10 +9,12 @@ DocumentView::DocumentView(Document & _model) :
 	init_transition_panel();
 	init_fields_panel();
 
-	layout->addWidget(info_panel, 0, 0);
-	layout->addWidget(transition_panel, 0, 1);
-	layout->addWidget(fields_panel, 1, 1, 1, 2);
+	layout->addWidget(info_panel, 0, 0, 1, 1);
+	layout->addWidget(transition_panel, 0, 1, 1, 1);
+	layout->addWidget(fields_panel, 1, 1, 2, 2);
 	setLayout(layout);
+
+	update_view();
 }
 
 DocumentView::~DocumentView() {
@@ -20,18 +23,25 @@ DocumentView::~DocumentView() {
 	delete_fields_panel();
 }
 
+void DocumentView::update_view()
+{
+	reset_fields();
+	update_fields();
+}
+
 void DocumentView::init_info_panel() {
 	info_panel = new QWidget();
 	info_panel_layout = new QVBoxLayout();
 
-	doc_type_label = new QLabel();
-	name_label = new QLabel(model.get_name().c_str());
-	
+	doc_type_label = new QLabel(("Doc type: " + model.get_current_state()->get_entity_string()).c_str());
+	doc_type_label->setStyleSheet("font-weight:bold;");
 	info_panel_layout->addWidget(doc_type_label);
+
+	name_label = new QLabel(("Current state: " + model.get_current_state()->get_display_name()).c_str());
+	name_label->setStyleSheet("font-weight:bold;");
 	info_panel_layout->addWidget(name_label);
 
 	info_panel->setLayout(info_panel_layout);
-	info_panel->show();
 }
 
 void DocumentView::init_transition_panel() {
@@ -39,10 +49,14 @@ void DocumentView::init_transition_panel() {
 	transition_panel_layout = new QHBoxLayout();
 
 	for (Action& action : model.get_current_state()->get_actions()) {
-		transition_buttons.push_back(new QPushButton(action.get_label().c_str()));
+		transition_buttons.push_back(new ActionView(action));
 		// povezi akcije sa tranzicijama
 		transition_panel_layout->addWidget(transition_buttons.back());
 	}
+
+	transition_panel_layout->addStretch();
+
+	transition_panel->setLayout(transition_panel_layout);
 }
 
 void DocumentView::init_fields_panel() {
@@ -52,16 +66,51 @@ void DocumentView::init_fields_panel() {
 	for (const Field& field : model.get_fields()) {
 		field_labels.push_back(new QLabel(field.get_name().c_str()));
 		fields.push_back(new FieldView(field));
-		fields_panel_layout->addRow(field_labels.back(), fields.back());
 	}
 
 	fields_panel->setLayout(fields_panel_layout);
-	fields_panel->show();
 }
+
+
+void DocumentView::reset_fields()
+{
+	for (FieldView* fv : fields) {
+		fv->setDisabled(false);
+	}
+
+	for (QLabel* l : field_labels) {
+		string l_string = l->text().toStdString();
+		if (l_string.find("*") != string::npos)
+			l->setText(l_string.substr(0, l_string.length() - 1).c_str());
+	}
+
+	for (auto i = 0; i < fields_panel_layout->rowCount(); i++)
+		fields_panel_layout->takeRow(i);
+}
+
+void DocumentView::update_fields() {
+
+	
+	list<QLabel*>::const_iterator it_lab = field_labels.begin();
+	for (FieldView* fv : fields) {
+
+		if (model.get_current_state()->find_mandatory_field((*it_lab)->text().toStdString()) != nullptr) {
+			string l_string = (*it_lab)->text().toStdString();
+			(*it_lab)->setText((l_string + "*").c_str());
+			fields_panel_layout->addRow(*it_lab, fv);
+		}
+		else if (model.get_current_state()->find_deny_field((*it_lab)->text().toStdString()) != nullptr) {
+			fv->setDisabled(true);
+			fields_panel_layout->addRow(*it_lab, fv);
+		}
+		
+		it_lab++;
+	}
+}
+
 
 void DocumentView::delete_info_panel() {
 	delete info_panel;
-	delete info_panel_layout;
 	delete id_label;
 	delete name_label;
 	delete doc_type_label;
