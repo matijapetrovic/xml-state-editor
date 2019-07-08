@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 State::State(int _entity_id, string _display_name, Document* _document) :
 	entity_id(_entity_id),
 	display_name(_display_name),
@@ -27,6 +28,32 @@ State::State(const State & s)
 
 }
 
+Action* State::find_action(std::string name)
+{
+	list<Action>::iterator iterator;
+	for (iterator = actions.begin(); iterator != actions.end(); iterator++)
+	{
+		if (iterator->get_label().compare(name) == 0) {
+			Action* act = (Action*)&iterator;
+			return act;
+		}
+			
+	}
+	return nullptr;
+}
+
+Transition* State::find_transition(int entity) {
+	
+	std::list<Transition>::iterator iterator;
+	for (iterator = transitions.begin(); iterator != transitions.end(); iterator++)
+	{
+		if ((*iterator).get_entity_id() == entity) {
+			Transition* tran = (Transition*)&iterator;
+			return tran;
+		}
+	}
+	return nullptr;
+}
 
 void State::set_state_semantic(list<StateSemantic>& ss)
 {

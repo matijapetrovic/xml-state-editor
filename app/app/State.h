@@ -19,7 +19,12 @@ public:
 	State() {}
 	State(int id, std::string _display_name, Document* _document);
 	State(const State& s);
+	//copy consturctor
 	
+	//find
+	Action* find_action(std::string name);
+	Transition* find_transition(int entity);
+
 	// Add to collection
 	void add_action(Action& a);
 	void add_transition(Transition& t);
