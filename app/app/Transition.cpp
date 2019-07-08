@@ -18,6 +18,21 @@ Transition::Transition(int _entity_id, string _lifecycle_name, EntityName _en_na
 	on_succeed(on_succ),
 	on_fail(on_f) {}
 
+Transition::Transition(const Transition & t)
+{
+
+
+	entity_id = t.entity_id;
+	lifecycle_name = t.lifecycle_name;
+	entity_name = t.entity_name;
+
+	on_succeed = t.on_succeed;
+	on_fail = t.on_fail;
+
+	on_succeed_num = t.on_succeed_num;
+	on_failed_num = t.on_failed_num;
+}
+
 int Transition::get_entity_id()
 {
 	return entity_id;
@@ -73,6 +88,6 @@ int Transition::get_on_succeed_num()
 }
 int Transition::get_on_failed_num()
 {
-	return on_succeed_num;
+	return on_failed_num;
 }
 

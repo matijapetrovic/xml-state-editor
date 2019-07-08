@@ -18,6 +18,7 @@ public:
 	
 	State() {}
 	State(int id, std::string _display_name, Document* _document);
+	State(const State& s);
 	
 	// Add to collection
 	void add_action(Action& a);
@@ -31,7 +32,8 @@ public:
 	// Getters
 	int get_entity_id() { return entity_id; };
 	std::string get_display_name() { return display_name; };
-	EntityName get_entity_name() { return entity_name; }
+	EntityName get_entity_name() { return entity_name; };
+	std::string get_lifecycle_name() { return lifecycle_name; };
 	Document* get_document() { return document; };
 
 	std::list<StateSemantic>& get_state_semantic() { return state_semantic; };

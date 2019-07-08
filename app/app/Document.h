@@ -17,10 +17,10 @@ public:
 	Document(std::string _name);
 	Document(std::string _name, State* s);
 	
-	void add_transition(Transition& t);
+	void add_transition(Transition t);
 	void add_field(Field& f);
 	void add_action(Action& a);
-	void add_state(State& s);
+	void add_state(State s);
 	
 	void set_name(std::string _name) { name = _name; };
 	void set_current_state(State * _state) { current_state = _state; };

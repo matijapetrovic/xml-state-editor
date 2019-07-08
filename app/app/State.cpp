@@ -9,6 +9,24 @@ State::State(int _entity_id, string _display_name, Document* _document) :
 {
 }
 
+State::State(const State & s)
+{
+	entity_id = s.entity_id;
+	display_name = s.display_name;
+	document = s.document;
+	lifecycle_name = s.lifecycle_name;
+	entity_name = s.entity_name;
+
+	transitions_ids = s.transitions_ids;
+	state_semantic = s.state_semantic;
+	actions = s.actions;
+	transitions = s.transitions;
+	mandatory_fields = s.mandatory_fields;
+	hide_fields = s.hide_fields;
+	deny_modyfing_filds = s.deny_modyfing_filds;
+
+}
+
 
 void State::set_state_semantic(list<StateSemantic>& ss)
 {
