@@ -15,10 +15,12 @@ DocumentView::DocumentView(Document & _model, MainController& _controller) :
 	init_info_panel();
 	init_transition_panel();
 	init_fields_panel();
+	init_buttons_panel();
 
 	layout->addWidget(info_panel, 0, 0, 1, 1);
 	layout->addWidget(transition_panel, 0, 1, 1, 1);
 	layout->addWidget(fields_panel, 1, 0, 2, 4);
+	layout->addWidget(buttons_panel, 2, 0, 2, 1);
 	setLayout(layout);
 
 	update_view();
@@ -80,7 +82,7 @@ void DocumentView::init_transition_panel()
 	for (Action& action : model.get_actions()) {
 		transition_buttons.push_back(new ActionView(action));
 		transition_panel_layout->addWidget(transition_buttons.back());
-		connect(transition_buttons.back(), SIGNAL(released()), this, SLOT(handle_button_pushed ()));
+		connect(transition_buttons.back(), SIGNAL(released()), this, SLOT(handle_action ()));
 	}
 
 	transition_panel->setLayout(transition_panel_layout);
@@ -99,6 +101,20 @@ void DocumentView::init_fields_panel()
 	}
 
 	fields_panel->setLayout(fields_panel_layout);
+}
+
+void DocumentView::init_buttons_panel()
+{
+	buttons_panel = new QWidget();
+	buttons_panel_layout = new QHBoxLayout();
+
+	save_button = new QPushButton("Save");
+	
+
+	delete_button = new QPushButton("Delete");
+	connect(delete_button, SIGNAL(released()), this, SLOT(handle_button_pushed()));
+
+	buttons_panel->setLayout(buttons_panel_layout);
 }
 
 void DocumentView::update_info()
@@ -162,7 +178,7 @@ void DocumentView::update_transitions()
 	}
 }
 
-void DocumentView::handle_button_pushed() 
+void DocumentView::handle_action() 
 {
 	State* prev_state = new State(*model.get_current_state());
 
@@ -192,6 +208,10 @@ void DocumentView::handle_button_pushed()
 	emit action_button_pushed(model.corresponding_trans(*av->get_model()), prev_state);
 }
 
+void DocumentView::handle_button_pushed() {
+	emit delete_button_pushed();
+}
+
 void DocumentView::delete_info_panel() 
 {
 	delete info_panel;
@@ -211,4 +231,12 @@ void DocumentView::delete_fields_panel()
 	for (FieldView* field : fields)
 		delete field;
 	delete fields_panel;
+}
+
+void DocumentView::delete_buttons_panel()
+{
+	delete save_button;
+	delete delete_button;
+	delete buttons_panel;
+
 }

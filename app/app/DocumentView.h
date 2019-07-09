@@ -23,8 +23,10 @@ public:
 
 Q_SIGNALS:
 	void action_button_pushed(Transition* transition, State* prev_state);
+	void delete_button_pushed();
 
 private Q_SLOTS:
+	void handle_action();
 	void handle_button_pushed();
 	void handle_model_update(bool error);
 
@@ -55,15 +57,24 @@ private:
 	std::list<QLabel*> field_labels;
 	std::list<FieldView*> fields;
 
+	// Button panel
+	QWidget* buttons_panel;
+	QHBoxLayout* buttons_panel_layout;
+
+	QPushButton* save_button;
+	QPushButton* delete_button;
+
 	// Panel init helpers
 	void init_info_panel();
 	void init_transition_panel();
 	void init_fields_panel();
+	void init_buttons_panel();
 
 	// Panel delete helpers
 	void delete_info_panel();
 	void delete_transition_panel();
 	void delete_fields_panel();
+	void delete_buttons_panel();
 
 	void reset_fields();
 	void update_fields();
