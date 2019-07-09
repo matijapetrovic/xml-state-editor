@@ -43,10 +43,10 @@ void Document::add_action(Action& a)
 {
 	actions.push_back(a);
 }
-void Document::set_current_state(State * _state)
+void Document::set_current_state(State * _state, bool error)
 {
 	current_state = _state;
-	emit model_updated();
+	emit model_updated(error);
 }
 void Document::set_states(std::list<State*>& stat)
 {

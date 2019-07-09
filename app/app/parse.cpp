@@ -277,7 +277,7 @@ void Parser::readStates(string filename)
 		}
 		document->add_state(state);
 		if (initFound) {
-			document->set_current_state(document->get_states().back());
+			document->set_current_state(document->get_states().back(), false);
 			initFound = false;
 		}
 	}
