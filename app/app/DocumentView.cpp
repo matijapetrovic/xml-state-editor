@@ -1,5 +1,6 @@
 #include "DocumentView.h"
 #include "ActionView.h"
+#include <QMessageBox>
 
 using namespace std;
 
@@ -41,8 +42,11 @@ void DocumentView::update_view()
 	update_transitions();
 }
 
-void DocumentView::handle_model_update()
+void DocumentView::handle_model_update(bool error)
 {
+	if (error)
+		auto reply = QMessageBox::critical(this, tr("Transition faild."), "Mandatoty fields must be filled.", QMessageBox::Ok);
+
 	update_view();
 }
 
@@ -107,12 +111,14 @@ void DocumentView::reset_fields()
 {
 	for (FieldView* fv : fields) {
 		fv->setDisabled(false);
+		fv->setVisible(false);
 	}
 
 	for (QLabel* l : field_labels) {
 		string l_string = l->text().toStdString();
 		if (l_string.find("*") != string::npos)
 			l->setText(l_string.substr(0, l_string.length() - 1).c_str());
+		l->setVisible(false);
 	}
 
 	for (auto i = 0; i < fields_panel_layout->rowCount(); i++)
@@ -126,10 +132,15 @@ void DocumentView::update_fields()
 		if (model.get_current_state()->find_mandatory_field((*it_lab)->text().toStdString()) != nullptr) {
 			string l_string = (*it_lab)->text().toStdString();
 			(*it_lab)->setText((l_string + "*").c_str());
+			(*it_lab)->setVisible(true);
+			fv->setVisible(true);
 			fields_panel_layout->addRow(*it_lab, fv);
 		}
 		else if (model.get_current_state()->find_deny_field((*it_lab)->text().toStdString()) != nullptr) {
 			fv->setDisabled(true);
+			(*it_lab)->setVisible(true);
+			fv->setVisible(true);
+
 			fields_panel_layout->addRow(*it_lab, fv);
 		}
 		

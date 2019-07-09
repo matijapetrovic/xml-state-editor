@@ -18,9 +18,9 @@ bool MainController::validate_state(State * prev_state)
 void MainController::do_transition(Transition* transition, State* prev_state)
 {
 	if (validate_state(prev_state))
-		model.set_current_state(transition->get_on_succeed());
+		model.set_current_state(transition->get_on_succeed(), false);
 	else
-		model.set_current_state(transition->get_on_fail());
+		model.set_current_state(transition->get_on_fail(), true);
 
 	delete prev_state;
 }

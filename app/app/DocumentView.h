@@ -26,7 +26,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
 	void handle_button_pushed();
-	void handle_model_update();
+	void handle_model_update(bool error);
 
 private:
 	Document& model;
