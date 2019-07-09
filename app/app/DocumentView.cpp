@@ -178,7 +178,7 @@ void DocumentView::handle_button_pushed()
 
 	ActionView* av = (ActionView*) sender();
 
-	emit action_button_pushed(av->get_model()->get_transition(), prev_state);
+	emit action_button_pushed(model.corresponding_trans(*av->get_model()), prev_state);
 }
 
 void DocumentView::delete_info_panel() 

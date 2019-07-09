@@ -6,6 +6,6 @@ Action::Action()
 {
 }
 
-Action::Action(string _label, Transition* trans) : label(_label), name(_label), transition(trans) {
+Action::Action(string _label) : label(_label), name(_label) {
 
 }

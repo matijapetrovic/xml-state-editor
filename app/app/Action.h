@@ -11,15 +11,13 @@ class Transition;
 class Action {
 public:
 	Action();
-	Action(std::string _label, Transition* trans);
+	Action(std::string _label);
 
 	std::string get_label() { return label; }
-	Transition* get_transition() { return transition; }
+	std::string get_name() { return name; }
 private:
 	std::string name;
 	std::string label;
-
-	Transition* transition;
 	
 };
 
