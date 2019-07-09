@@ -14,8 +14,8 @@ Document::Document(string name, State* s) :
 
 Document::~Document()
 {
-	for (State& s : states)
-		delete &s;
+	for (State* s : states)
+		delete s;
 
 	for (Transition& t : transitions)
 		delete &t;
@@ -27,7 +27,7 @@ Document::~Document()
 		delete &a;
 }
 
-void Document::add_state(State s)
+void Document::add_state(State* s)
 {
 	states.push_back(s);
 }
@@ -48,7 +48,7 @@ void Document::set_current_state(State * _state)
 	current_state = _state;
 	emit model_updated();
 }
-void Document::set_states(std::list<State>& stat)
+void Document::set_states(std::list<State*>& stat)
 {
 	states = stat;
 }
@@ -82,9 +82,9 @@ Action * Document::find_action(Action a)
 }
 Transition * Document::corresponding_trans(Action & a)
 {
-	for (Transition& t : current_state->get_transitions())
-		if (t.get_action()->get_name() == a.get_name())
-			return &t;
+	for (Transition* t : current_state->get_transitions())
+		if (t->get_action()->get_name() == a.get_name())
+			return t;
 
 	return NULL;
 
@@ -99,7 +99,7 @@ list<Transition>& Document::get_transitions()
 	return transitions;
 }
 
-list<State>& Document::get_states()
+list<State*>& Document::get_states()
 {
 	return states;
 }

@@ -12,6 +12,5 @@ MainView::MainView(Document* doc, MainController* ctrl) :
 }
 
 MainView::~MainView() {
-	delete document;
 }
 

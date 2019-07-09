@@ -8,8 +8,8 @@ MainController::~MainController() {}
 
 bool MainController::validate_state(State * prev_state)
 {
-	for (Field f : prev_state->get_mandatory_fields())
-		if (f.get_text().empty())
+	for (Field* f : prev_state->get_mandatory_fields())
+		if (f->get_text().empty())
 			return false;
 
 	return true;

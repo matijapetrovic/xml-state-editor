@@ -17,6 +17,7 @@ public:
 	enum StateSemantic{INIT=0, SAVE_ENABLED, DELETE_ENABLED, FINAL};
 	
 	State() {}
+	
 	State(int id) : entity_id(id) {}
 	State(int id, std::string _display_name);
 	State(const State& s);
@@ -43,11 +44,11 @@ public:
 	std::string get_entity_string();
 
 	std::vector<StateSemantic>& get_state_semantic() { return state_semantic; };
-	std::vector<Action*> get_actions() { return actions; };
-	std::vector<Transition*> get_transitions() { return transitions; };
-	std::vector<Field*> get_mandatory_fields() { return mandatory_fields; };
-	std::vector<Field*> get_hide_fields() { return hide_fields; };
-	std::vector<Field*> get_deny_fields() { return deny_modifying_fileds; };
+	std::vector<Action*>& get_actions() { return actions; };
+	std::vector<Transition*>& get_transitions() { return transitions; };
+	std::vector<Field*>& get_mandatory_fields() { return mandatory_fields; };
+	std::vector<Field*>& get_hide_fields() { return hide_fields; };
+	std::vector<Field*>& get_deny_fields() { return deny_modifying_fileds; };
 
 	// Setters
 	void set_entity_id(int _entity_id) { entity_id = _entity_id; };
@@ -56,11 +57,11 @@ public:
 	void set_entity_name(EntityName _entity_name) { entity_name = _entity_name; }
 
 	void set_state_semantic(std::vector<StateSemantic>& ss);
-	void set_actions(std::vector<Action*> act);
-	void set_transitions(std::vector<Transition*> tr);
-	void set_mandatory_fields(std::vector<Field*> f);
-	void set_hide_fields(std::vector<Field*> hide);
-	void set_deny_fields(std::vector<Field*> deny);
+	void set_actions(std::vector<Action*>& act);
+	void set_transitions(std::vector<Transition*>& tr);
+	void set_mandatory_fields(std::vector<Field*>& f);
+	void set_hide_fields(std::vector<Field*>& hide);
+	void set_deny_fields(std::vector<Field*>& deny);
 
 
 	Field* find_mandatory_field(std::string name);

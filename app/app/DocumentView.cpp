@@ -155,24 +155,24 @@ void DocumentView::handle_button_pushed()
 {
 	State* prev_state = new State(*model.get_current_state());
 
-	for (Field& f : prev_state->get_mandatory_fields()) {
+	for (Field* f : prev_state->get_mandatory_fields()) {
 		for (FieldView* fv : fields) {
-			if (fv->get_model().get_name() == f.get_name())
-				f.set_text(fv->text().toStdString());
+			if (fv->get_model().get_name() == f->get_name())
+				f->set_text(fv->text().toStdString());
 		}
 	}
 
-	for (Field& f : prev_state->get_deny_fields()) {
+	for (Field* f : prev_state->get_deny_fields()) {
 		for (FieldView* fv : fields) {
-			if (fv->get_model().get_name() == f.get_name())
-				f.set_text(fv->text().toStdString());
+			if (fv->get_model().get_name() == f->get_name())
+				f->set_text(fv->text().toStdString());
 		}
 	}
 
-	for (Field& f : prev_state->get_hide_fields()) {
+	for (Field* f : prev_state->get_hide_fields()) {
 		for (FieldView* fv : fields) {
-			if (fv->get_model().get_name() == f.get_name())
-				f.set_text(fv->text().toStdString());
+			if (fv->get_model().get_name() == f->get_name())
+				f->set_text(fv->text().toStdString());
 		}
 	}
 

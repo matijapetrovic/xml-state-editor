@@ -49,23 +49,23 @@ void State::set_state_semantic(vector<StateSemantic>& ss)
 {
 	state_semantic = ss;
 }
-void State::set_actions(vector<Action*> act)
+void State::set_actions(vector<Action*>& act)
 {
 	actions = act;
 }
-void State::set_transitions(vector<Transition*> tr)
+void State::set_transitions(vector<Transition*>& tr)
 {
 	transitions = tr;
 }
-void State::set_mandatory_fields(vector<Field*> mandatory)
+void State::set_mandatory_fields(vector<Field*>& mandatory)
 {
 	mandatory_fields = mandatory;
 }
-void State::set_hide_fields(vector<Field*> hide)
+void State::set_hide_fields(vector<Field*>& hide)
 {
 	hide_fields = hide;
 }
-void State::set_deny_fields(vector<Field*> deny)
+void State::set_deny_fields(vector<Field*>& deny)
 {
 	deny_modifying_fileds = deny;
 }

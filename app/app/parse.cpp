@@ -165,7 +165,7 @@ void Parser::readStates(string filename)
 	//iteriramo kroz konekcije
 	for (TiXmlElement* elem = stateXml->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement())
 	{
-		State state;
+		State* state = new State;
 		string elemName = elem->Value();
 
 		const char* attr;
@@ -174,7 +174,7 @@ void Parser::readStates(string filename)
 			if (attr != NULL) {
 				int id = strToInt(attr);
 				os << id << endl;
-				state.set_entity_id(id);
+				state->set_entity_id(id);
 			}
 
 		}
@@ -199,9 +199,9 @@ void Parser::readStates(string filename)
 					if (attr2 != NULL) {
 						os << " " << attr2;
 						int id = strToInt(attr2);
-						Transition t(id);
+						Transition* t = new Transition(id);
 						//state.add_transition_id(id);
-						state.add_transition(t);
+						state->add_transition(t);
 					}
 				}
 
@@ -215,56 +215,56 @@ void Parser::readStates(string filename)
 					os << " " << t;
 
 					if (strcmp(attr, "LIFECYCLE_NAME") == 0) {
-						state.set_lifecycle_name(t1);
+						state->set_lifecycle_name(t1);
 					}
 					else if (strcmp(attr, "STATE_DENY_MODIFYING_FIELDS") == 0) {
 
-						Field field;
-						field.set_name(t);
-						state.add_deny_field(field);
-						document->add_field(field);
+						Field* field = new Field;
+						field->set_name(t);
+						state->add_deny_field(field);
+						document->add_field(*field);
 					}
 					else if (strcmp(attr, "STATE_HIDE_FIELDS") == 0) {
-						Field field;
-						field.set_name(t);
-						state.add_hide_field(field);
-						document->add_field(field);
+						Field* field = new Field;
+						field->set_name(t);
+						state->add_hide_field(field);
+						document->add_field(*field);
 					}
 					else if (strcmp(attr, "STATE_MANDATORY_FIELDS") == 0) {
-						Field field;
-						field.set_name(t);
-						state.add_mandatory_field(field);
-						document->add_field(field);
+						Field* field = new Field;
+						field->set_name(t);
+						state->add_mandatory_field(field);
+						document->add_field(*field);
 					}
 					else if (strcmp(attr, "ENTITY_NAME") == 0) {
 						if (strcmp(t1, "AccessPermit") == 0) {
-							state.set_entity_name(EntityName::ACCESS_PERMIT);
+							state->set_entity_name(EntityName::ACCESS_PERMIT);
 						}
 						else if (strcmp(t1, "SwitchRequest") == 0) {
-							state.set_entity_name(EntityName::SWITCH_REQUEST);
+							state->set_entity_name(EntityName::SWITCH_REQUEST);
 						}
 						else if (strcmp(t1, "SwitchOrder") == 0) {
-							state.set_entity_name(EntityName::SWITCH_ORDER);
+							state->set_entity_name(EntityName::SWITCH_ORDER);
 						}
 
 					}
 					else if (strcmp(attr, "DISPLAY_NAME") == 0) {
-						state.set_display_name(t1);
+						state->set_display_name(t1);
 					}
 					else if (strcmp(attr, "STATE_SEMANTIC") == 0) {
 						if (strcmp(t1, "Init") == 0) {
 							valid = true;
 							initFound = true;
-							state.add_state_semantic(State::StateSemantic::INIT);
+							state->add_state_semantic(State::StateSemantic::INIT);
 						}
 						else if (strcmp(t1, "SaveEnabled") == 0) {
-							state.add_state_semantic(State::StateSemantic::SAVE_ENABLED);
+							state->add_state_semantic(State::StateSemantic::SAVE_ENABLED);
 						}
 						else if (strcmp(t1, "DeleteEnabled") == 0) {
-							state.add_state_semantic(State::StateSemantic::DELETE_ENABLED);
+							state->add_state_semantic(State::StateSemantic::DELETE_ENABLED);
 						}
 						else if (strcmp(t1, "Final") == 0) {
-							state.add_state_semantic(State::StateSemantic::FINAL);
+							state->add_state_semantic(State::StateSemantic::FINAL);
 						}
 					}
 
@@ -277,7 +277,7 @@ void Parser::readStates(string filename)
 		}
 		document->add_state(state);
 		if (initFound) {
-			document->set_current_state(&(document->get_states().back()));
+			document->set_current_state(document->get_states().back());
 			initFound = false;
 		}
 	}
@@ -290,15 +290,13 @@ void Parser::readStates(string filename)
 
 void Parser::fill_states() {
 
-	for (State& state : document->get_states())
+	for (State* state : document->get_states())
 	{
-		vector<Transition*> tr = state.get_transitions();
+		vector<Transition*>& tr = state->get_transitions();
 		for (auto& t : document->get_transitions()) {
-			for (auto it = tr.begin(); it != tr.end(); it++) {
-				if (it->get_entity_id() == t.get_entity_id()) {
-					state.get_transitions().erase(it);
-					state.add_transition(t);
-
+			for (int i = 0; i < tr.size(); i++) {
+				if (tr[i]->get_entity_id() == t.get_entity_id()) {
+					state->get_transitions()[i] = &t;
 					break;
 				}
 			}
@@ -312,16 +310,16 @@ void Parser::fill_transitions() {
 
 	for (Transition& trans : document->get_transitions())
 	{
-		for (State& state : document->get_states())
+		for (State* state : document->get_states())
 		{
-			if ((state).get_entity_id() == trans.get_on_succeed()->get_entity_id()) {
+			if (state->get_entity_id() == trans.get_on_succeed()->get_entity_id()) {
 				delete trans.get_on_succeed();
-				trans.set_on_succeed(&state);
+				trans.set_on_succeed(state);
 
 			}
-			else if ((state).get_entity_id() == trans.get_on_fail()->get_entity_id()) {
+			else if (state->get_entity_id() == trans.get_on_fail()->get_entity_id()) {
 				delete trans.get_on_fail();
-				trans.set_on_fail(&state);
+				trans.set_on_fail(state);
 			}
 
 		}
@@ -331,15 +329,15 @@ void Parser::fill_transitions() {
 
 void Parser::fill_actions()
 {
-	for (State& state : document->get_states()) {
-		for (Transition* transition : state.get_transitions()) {
+	for (State* state : document->get_states()) {
+		for (Transition* transition : state->get_transitions()) {
 			string name = (*transition->get_on_succeed()).get_lifecycle_name();
 			Action* action = new Action(name);
 			if (!document->action_exsist(*action))
 				document->add_action(*action);
 
 			transition->set_action(action);
-			state.add_action(action);
+			state->add_action(action);
 		}
 	}
 }
