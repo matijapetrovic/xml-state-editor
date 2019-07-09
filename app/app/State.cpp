@@ -20,26 +20,26 @@ State::State(const State & s)
 	transitions = s.transitions;
 	mandatory_fields = s.mandatory_fields;
 	hide_fields = s.hide_fields;
-	deny_modyfing_filds = s.deny_modyfing_filds;
+	deny_modifying_fileds = s.deny_modifying_fileds;
 
 }
 
 Action* State::find_action(std::string name)
 {
-	for (Action& ac : actions)
+	for (Action* ac : actions)
 	{
-		if (ac.get_label() == name)
-			return &ac;
+		if (ac->get_label() == name)
+			return ac;
 	}
 	return nullptr;
 }
 
 Transition* State::find_transition(int entity) {
 
-	for (Transition& t : transitions)
+	for (Transition* t : transitions)
 	{
-		if (t.get_entity_id() == entity) {
-			return &t;
+		if (t->get_entity_id() == entity) {
+			return t;
 		}
 	}
 	return nullptr;
@@ -49,73 +49,73 @@ void State::set_state_semantic(vector<StateSemantic>& ss)
 {
 	state_semantic = ss;
 }
-void State::set_actions(vector<Action>& act)
+void State::set_actions(vector<Action*> act)
 {
 	actions = act;
 }
-void State::set_transitions(vector<Transition>& tr)
+void State::set_transitions(vector<Transition*> tr)
 {
 	transitions = tr;
 }
-void State::set_mandatory_fields(vector<Field>& mandatory)
+void State::set_mandatory_fields(vector<Field*> mandatory)
 {
 	mandatory_fields = mandatory;
 }
-void State::set_hide_fields(vector<Field>& hide)
+void State::set_hide_fields(vector<Field*> hide)
 {
 	hide_fields = hide;
 }
-void State::set_deny_fields(vector<Field>& deny)
+void State::set_deny_fields(vector<Field*> deny)
 {
-	deny_modyfing_filds = deny;
+	deny_modifying_fileds = deny;
 }
 
 Field * State::find_mandatory_field(std::string name)
 {
-	for (Field& f : mandatory_fields) {
-		if (f.get_name() == name)
-			return &f;
+	for (Field* f : mandatory_fields) {
+		if (f->get_name() == name)
+			return f;
 	}
 	return nullptr;
 }
 
 Field * State::find_hide_field(std::string name)
 {
-	for (Field& f : hide_fields) {
-		if (f.get_name() == name)
-			return &f;
+	for (Field* f : hide_fields) {
+		if (f->get_name() == name)
+			return f;
 	}
 	return nullptr;
 }
 
 Field * State::find_deny_field(std::string name)
 {
-	for (Field& f : deny_modyfing_filds) {
-		if (f.get_name() == name)
-			return &f;
+	for (Field* f : deny_modifying_fileds) {
+		if (f->get_name() == name)
+			return f;
 	}
 	return nullptr;
 }
 
-void State::add_action(Action& a)
+void State::add_action(Action* a)
 {
 	actions.push_back(a);
 }
-void State::add_transition(Transition& t)
+void State::add_transition(Transition* t)
 {
 	transitions.push_back(t);
 }
-void State::add_mandatory_field(Field& f)
+void State::add_mandatory_field(Field* f)
 {
 	mandatory_fields.push_back(f);
 }
-void State::add_hide_field(Field& hide)
+void State::add_hide_field(Field* hide)
 {
 	hide_fields.push_back(hide);
 }
-void State::add_deny_field(Field& deny)
+void State::add_deny_field(Field* deny)
 {
-	deny_modyfing_filds.push_back(deny);
+	deny_modifying_fileds.push_back(deny);
 }
 
 void State::add_state_semantic(StateSemantic s)

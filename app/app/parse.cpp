@@ -292,7 +292,7 @@ void Parser::fill_states() {
 
 	for (State& state : document->get_states())
 	{
-		vector<Transition>& tr = state.get_transitions();
+		vector<Transition*> tr = state.get_transitions();
 		for (auto& t : document->get_transitions()) {
 			for (auto it = tr.begin(); it != tr.end(); it++) {
 				if (it->get_entity_id() == t.get_entity_id()) {
@@ -332,14 +332,14 @@ void Parser::fill_transitions() {
 void Parser::fill_actions()
 {
 	for (State& state : document->get_states()) {
-		for (Transition& transition : state.get_transitions()) {
-			string name = (*transition.get_on_succeed()).get_lifecycle_name();
+		for (Transition* transition : state.get_transitions()) {
+			string name = (*transition->get_on_succeed()).get_lifecycle_name();
 			Action* action = new Action(name);
 			if (!document->action_exsist(*action))
 				document->add_action(*action);
 
-			transition.set_action(action);
-			state.add_action(*action);
+			transition->set_action(action);
+			state.add_action(action);
 		}
 	}
 }
