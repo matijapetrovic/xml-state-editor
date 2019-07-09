@@ -8,6 +8,7 @@
 // Forward declarations
 class State;
 class Document;
+class Action;
 
 class Transition {
 public:
@@ -34,6 +35,8 @@ public:
 	void set_on_succeed(State* succeed);
 	void set_on_fail(State* fail);
 
+	void set_action(Action* _action);
+	Action* get_action() { return action; }
 
 private:
 	int entity_id;
@@ -42,6 +45,8 @@ private:
 
 	State* on_succeed;
 	State* on_fail;
+
+	Action* action;
 };
 
 #endif //_TRANSITION_H_

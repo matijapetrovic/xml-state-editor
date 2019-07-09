@@ -20,6 +20,7 @@ public:
 	Document() {};
 	Document(std::string _name);
 	Document(std::string _name, State* s);
+	~Document();
 	
 	void add_transition(Transition t);
 	void add_field(Field& f);
@@ -33,6 +34,10 @@ public:
 	void set_transitions(std::list<Transition>& tran);
 	void set_fields(std::set<Field>& fil);
 	void set_actions(std::list<Action>& ac);
+
+	bool action_exsist(Action a);
+	Action* find_action(Action a);
+	Transition* corresponding_trans(Action& a);
 	
 	std::list<Action>& get_actions();
 	std::list<Transition>& get_transitions();

@@ -12,6 +12,21 @@ Document::Document(string name, State* s) :
 	name(name),
 	current_state(s){}
 
+Document::~Document()
+{
+	for (State& s : states)
+		delete &s;
+
+	for (Transition& t : transitions)
+		delete &t;
+
+	for (auto i = fields.begin(); i != fields.end(); i++)
+		delete &(*i);
+
+	for (Action& a : actions)
+		delete &a;
+}
+
 void Document::add_state(State s)
 {
 	states.push_back(s);
@@ -49,6 +64,32 @@ void Document::set_actions(list<Action>& ac)
 {
 	actions = ac;
 }
+bool Document::action_exsist(Action a)
+{
+	for (Action aa : actions)
+		if (a.get_name() == aa.get_name())
+			return true;
+	return false;
+}
+Action * Document::find_action(Action a)
+{
+	for (auto aa = actions.begin(); aa != actions.end(); aa++)
+		if (a.get_name() == (*aa).get_name())
+			return &(*aa);
+
+	return NULL;
+
+}
+Transition * Document::corresponding_trans(Action & a)
+{
+	for (Transition& t : current_state->get_transitions())
+		if (t.get_action()->get_name() == a.get_name())
+			return &t;
+
+	return NULL;
+
+}
+
 list<Action>& Document::get_actions()
 {
 	return actions;

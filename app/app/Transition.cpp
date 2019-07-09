@@ -63,6 +63,10 @@ void Transition::set_on_fail(State* onfail)
 {
 	on_fail = onfail;
 }
+void Transition::set_action(Action * _action)
+{
+	action = _action;
+}
 State* Transition::get_on_fail()
 {
 	return on_fail;
