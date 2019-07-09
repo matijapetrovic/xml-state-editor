@@ -1236,8 +1236,8 @@ Shadow=0</a:DisplayPreferences>
 <o:DependencySymbol Id="o10">
 <a:CreationDate>1561984266</a:CreationDate>
 <a:ModificationDate>1562064658</a:ModificationDate>
-<a:Rect>((-825,2653), (18313,4200))</a:Rect>
-<a:ListOfPoints>((-825,3637),(4549,3637),(4549,4162),(18313,4162))</a:ListOfPoints>
+<a:Rect>((-848,2617), (18322,4200))</a:Rect>
+<a:ListOfPoints>((-848,3637),(4549,3637),(4549,4162),(18322,4162))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1257,8 +1257,8 @@ Shadow=0</a:DisplayPreferences>
 <o:UseCaseAssociationSymbol Id="o14">
 <a:CreationDate>1562064467</a:CreationDate>
 <a:ModificationDate>1562064674</a:ModificationDate>
-<a:Rect>((-23378,2728), (-13808,23803))</a:Rect>
-<a:ListOfPoints>((-23378,2728),(-23378,23803),(-13808,23803))</a:ListOfPoints>
+<a:Rect>((-23378,2728), (-13822,23803))</a:Rect>
+<a:ListOfPoints>((-23378,2728),(-23378,23803),(-13822,23803))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1277,8 +1277,8 @@ Shadow=0</a:DisplayPreferences>
 <o:UseCaseAssociationSymbol Id="o17">
 <a:CreationDate>1562064601</a:CreationDate>
 <a:ModificationDate>1562064643</a:ModificationDate>
-<a:Rect>((-24053,253), (-2303,3703))</a:Rect>
-<a:ListOfPoints>((-24053,253),(-13351,253),(-13351,3703),(-2303,3703))</a:ListOfPoints>
+<a:Rect>((-24053,253), (-2291,3703))</a:Rect>
+<a:ListOfPoints>((-24053,253),(-13351,253),(-13351,3703),(-2291,3703))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1297,8 +1297,8 @@ Shadow=0</a:DisplayPreferences>
 <o:UseCaseAssociationSymbol Id="o19">
 <a:CreationDate>1562064632</a:CreationDate>
 <a:ModificationDate>1562064663</a:ModificationDate>
-<a:Rect>((-24128,600), (-3128,13978))</a:Rect>
-<a:ListOfPoints>((-24076,600),(-24128,13978),(-3128,13978))</a:ListOfPoints>
+<a:Rect>((-24076,600), (-2966,13978))</a:Rect>
+<a:ListOfPoints>((-24076,600),(-24076,13978),(-2966,13978))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1317,8 +1317,8 @@ Shadow=0</a:DisplayPreferences>
 <o:DependencySymbol Id="o22">
 <a:CreationDate>1562064724</a:CreationDate>
 <a:ModificationDate>1562064724</a:ModificationDate>
-<a:Rect>((-16727,4753), (22158,25574))</a:Rect>
-<a:ListOfPoints>((-16727,24328),(19608,24328),(19608,4753))</a:ListOfPoints>
+<a:Rect>((-16699,4753), (22164,25610))</a:Rect>
+<a:ListOfPoints>((-16699,24328),(19584,24328),(19584,4753))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1378,7 +1378,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCaseSymbol Id="o15">
 <a:CreationDate>1561970478</a:CreationDate>
 <a:ModificationDate>1562268504</a:ModificationDate>
-<a:Rect>((-21676,20775), (-7878,26174))</a:Rect>
+<a:Rect>((-21577,20775), (-7977,26174))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1396,7 +1396,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCaseSymbol Id="o11">
 <a:CreationDate>1561970521</a:CreationDate>
 <a:ModificationDate>1562064643</a:ModificationDate>
-<a:Rect>((-6550,1275), (2949,6674))</a:Rect>
+<a:Rect>((-6440,1275), (2839,6674))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1414,7 +1414,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCaseSymbol Id="o12">
 <a:CreationDate>1561970642</a:CreationDate>
 <a:ModificationDate>1562268521</a:ModificationDate>
-<a:Rect>((9974,2025), (27372,7424))</a:Rect>
+<a:Rect>((10193,2025), (27153,7424))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1432,7 +1432,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCaseSymbol Id="o20">
 <a:CreationDate>1562064502</a:CreationDate>
 <a:ModificationDate>1562064625</a:ModificationDate>
-<a:Rect>((-7201,12553), (5897,17952))</a:Rect>
+<a:Rect>((-6772,12553), (5468,17952))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
