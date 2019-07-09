@@ -11,6 +11,7 @@ DocumentView::DocumentView(Document & _model, MainController& _controller) :
 {
 	connect(this, &DocumentView::action_button_pushed, &controller, &MainController::do_transition);
 	connect(&model, &Document::model_updated, this, &DocumentView::handle_model_update);
+	connect(this, &DocumentView::delete_button_pushed, &controller, &MainController::delete_fields);
 
 	init_info_panel();
 	init_transition_panel();
@@ -31,6 +32,7 @@ DocumentView::~DocumentView()
 	delete_info_panel();
 	delete_transition_panel();
 	delete_fields_panel();
+	delete_buttons_panel();
 }
 
 void DocumentView::update_view()
@@ -47,7 +49,7 @@ void DocumentView::update_view()
 void DocumentView::handle_model_update(bool error)
 {
 	if (error)
-		auto reply = QMessageBox::critical(this, tr("Transition faild."), "Mandatoty fields must be filled.", QMessageBox::Ok);
+		auto reply = QMessageBox::critical(this, tr("Transition failed"), "Mandatory fields must be filled", QMessageBox::Ok);
 
 	update_view();
 }
@@ -113,6 +115,9 @@ void DocumentView::init_buttons_panel()
 
 	delete_button = new QPushButton("Delete");
 	connect(delete_button, SIGNAL(released()), this, SLOT(handle_button_pushed()));
+
+	buttons_panel_layout->addWidget(save_button);
+	buttons_panel_layout->addWidget(delete_button);
 
 	buttons_panel->setLayout(buttons_panel_layout);
 }

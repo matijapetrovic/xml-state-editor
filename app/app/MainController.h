@@ -17,4 +17,5 @@ public:
 
 public Q_SLOTS:
 	void do_transition(Transition* transition, State* prev_state);
+	void delete_fields();
 };

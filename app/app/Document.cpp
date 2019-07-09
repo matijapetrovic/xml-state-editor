@@ -108,4 +108,32 @@ set<Field>& Document::get_fields()
 	return fields;
 }
 
+void Document::clear_fields()
+{
+	for (Field* f : current_state->get_deny_fields())
+		f->set_text("");
+
+	for (Field* f : current_state->get_mandatory_fields())
+		f->set_text("");
+
+	for (Field* f : current_state->get_hide_fields())
+		f->set_text("");
+
+	emit model_updated(false);
+}
+
+void Document::update_state_fields(State * prev_state)
+{
+
+	for (int i = 0; i < current_state->get_mandatory_fields().size(); i++)
+		current_state->get_mandatory_fields()[i]->set_text(prev_state->get_mandatory_fields()[i]->get_text());
+
+	for (int i = 0; i < current_state->get_hide_fields().size(); i++)
+		current_state->get_hide_fields()[i]->set_text(prev_state->get_hide_fields()[i]->get_text());
+
+	for (int i = 0; i < current_state->get_deny_fields().size(); i++)
+		current_state->get_deny_fields()[i]->set_text(prev_state->get_deny_fields()[i]->get_text());
+
+}
+
 

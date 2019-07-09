@@ -46,6 +46,9 @@ public:
 	std::string get_name() { return name; };
 	State* get_current_state() { return current_state; };
 
+	void clear_fields();
+	void update_state_fields(State* prev_state);
+
 private:
 	std::string name;
 	
