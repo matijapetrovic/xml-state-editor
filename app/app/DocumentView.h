@@ -9,6 +9,7 @@
 
 #include "Document.h"
 #include "FieldView.h"
+#include "ActionView.h"
 #include "MainController.h"
 
 class DocumentView : public QWidget {
@@ -45,7 +46,7 @@ private:
 	QWidget* transition_panel;
 	QHBoxLayout* transition_panel_layout;
 
-	std::list<QPushButton*> transition_buttons;
+	std::list<ActionView*> transition_buttons;
 
 	// Fields panel
 	QWidget* fields_panel;
@@ -66,6 +67,11 @@ private:
 
 	void reset_fields();
 	void update_fields();
+
+	void update_info();
+
+	void reset_transitions();
+	void update_transitions();
 
 };
 

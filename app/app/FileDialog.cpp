@@ -77,11 +77,11 @@ void FileDialog::accept_action() {
 				reject();
 		}
 		
-		//catch (MissingInitStateException e) {
-		//	auto reply = QMessageBox::critical(this, tr("Missing init state."), "Please choose a valid XML file.", QMessageBox::Abort | QMessageBox::Retry);
-		//	if (reply == QMessageBox::Abort)
-		//		reject();
-		//}
+		catch (MissingInitStateException e) {
+			auto reply = QMessageBox::critical(this, tr("Missing init state."), "Please choose a valid XML file.", QMessageBox::Abort | QMessageBox::Retry);
+			if (reply == QMessageBox::Abort)
+				reject();
+		}
 	}
 }
 

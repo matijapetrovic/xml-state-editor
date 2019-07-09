@@ -34,6 +34,11 @@ void DocumentView::update_view()
 {
 	reset_fields();
 	update_fields();
+
+	update_info();
+
+	reset_transitions();
+	update_transitions();
 }
 
 void DocumentView::handle_model_update()
@@ -46,17 +51,19 @@ void DocumentView::init_info_panel()
 	info_panel = new QWidget();
 	info_panel_layout = new QVBoxLayout();
 
-	doc_type_label = new QLabel(("Doc type: " + model.get_current_state()->get_entity_string()).c_str());
+	doc_type_label = new QLabel();
 	doc_type_label->setStyleSheet("font-weight:bold;");
 	info_panel_layout->addWidget(doc_type_label);
 
 	info_panel_layout->setAlignment({ Qt::AlignLeft, Qt::AlignTop });
 
-	name_label = new QLabel(("Current state: " + model.get_current_state()->get_display_name()).c_str());
+	name_label = new QLabel();
 	name_label->setStyleSheet("font-weight:bold;");
 	info_panel_layout->addWidget(name_label);
 
 	info_panel->setLayout(info_panel_layout);
+	
+	update_info();
 }
 
 void DocumentView::init_transition_panel() 
@@ -66,14 +73,15 @@ void DocumentView::init_transition_panel()
 
 	transition_panel_layout->setAlignment({ Qt::AlignLeft, Qt::AlignTop });
 
-	for (Action& action : model.get_current_state()->get_actions()) {
+	for (Action& action : model.get_actions()) {
 		transition_buttons.push_back(new ActionView(action));
-		// povezi akcije sa tranzicijama
 		transition_panel_layout->addWidget(transition_buttons.back());
 		connect(transition_buttons.back(), SIGNAL(released()), this, SLOT(handle_button_pushed ()));
 	}
 
 	transition_panel->setLayout(transition_panel_layout);
+
+	update_transitions();
 }
 
 void DocumentView::init_fields_panel() 
@@ -89,6 +97,11 @@ void DocumentView::init_fields_panel()
 	fields_panel->setLayout(fields_panel_layout);
 }
 
+void DocumentView::update_info()
+{
+	name_label->setText(("Current state: " + model.get_current_state()->get_display_name()).c_str());
+	doc_type_label->setText(("Doc type: " + model.get_current_state()->get_entity_string()).c_str());
+}
 
 void DocumentView::reset_fields()
 {
@@ -103,14 +116,13 @@ void DocumentView::reset_fields()
 	}
 
 	for (auto i = 0; i < fields_panel_layout->rowCount(); i++)
-		fields_panel_layout->takeRow(i);
+		fields_panel_layout->takeAt(i);
 }
 
 void DocumentView::update_fields() 
 {
 	list<QLabel*>::const_iterator it_lab = field_labels.begin();
 	for (FieldView* fv : fields) {
-
 		if (model.get_current_state()->find_mandatory_field((*it_lab)->text().toStdString()) != nullptr) {
 			string l_string = (*it_lab)->text().toStdString();
 			(*it_lab)->setText((l_string + "*").c_str());
@@ -122,6 +134,20 @@ void DocumentView::update_fields()
 		}
 		
 		it_lab++;
+	}
+}
+
+void DocumentView::reset_transitions() 
+{
+	for (ActionView* av : transition_buttons)
+		av->setVisible(false);
+}
+
+void DocumentView::update_transitions() 
+{
+	for (ActionView* av : transition_buttons) {
+		if (model.get_current_state()->find_action(av->get_model()->get_label()) != nullptr)
+			av->setVisible(true);
 	}
 }
 
@@ -150,22 +176,21 @@ void DocumentView::handle_button_pushed()
 		}
 	}
 
-	ActionView* aw = (ActionView*) sender();
+	ActionView* av = (ActionView*) sender();
 
-	emit action_button_pushed(aw->get_model()->get_transition(), prev_state);
+	emit action_button_pushed(av->get_model()->get_transition(), prev_state);
 }
 
 void DocumentView::delete_info_panel() 
 {
 	delete info_panel;
-	delete id_label;
-	delete name_label;
-	delete doc_type_label;
 }
 
 void DocumentView::delete_transition_panel()
 {
-
+	for (ActionView* av : transition_buttons)
+		delete av;
+	delete transition_panel;
 }
 
 void DocumentView::delete_fields_panel() 
@@ -175,5 +200,4 @@ void DocumentView::delete_fields_panel()
 	for (FieldView* field : fields)
 		delete field;
 	delete fields_panel;
-	delete fields_panel_layout;
 }
